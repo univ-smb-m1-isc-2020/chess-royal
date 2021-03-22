@@ -24,7 +24,7 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
       - name: Build Docker image
-        run: docker build -t chuck-facts .
+        run: docker build -t chess-royale .
 
       - name: Push to GitHub Packages
         uses: docker/build-push-action@v1
@@ -32,5 +32,5 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
           registry: docker.pkg.github.com
-          repository: univ-smb-m1-isc-2020/chuck-facts/chuck-facts
+          repository: https://github.com/univ-smb-m1-isc-2020/chess-royal/master
           tag_with_ref: true
