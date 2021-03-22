@@ -8,7 +8,7 @@ import java.util.List;
 public class ChessRoyaleService {
 
     public List<ChessRoyale> facts() {
-        return List.of(new ChessRoyale("Chuck Norris once lost his wedding ring....since then it's been war in Middle Earth"));
+        return List.of(new ChessRoyale("Chuck Norris threw a grenade and killed 50 people, then it exploded."));
     }
 
 }
