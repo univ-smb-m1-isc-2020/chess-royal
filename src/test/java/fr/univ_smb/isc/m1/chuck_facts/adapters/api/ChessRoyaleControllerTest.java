@@ -1,7 +1,7 @@
 package fr.univ_smb.isc.m1.chuck_facts.adapters.api;
 
-import fr.univ_smb.isc.m1.chuck_facts.application.ChuckFact;
-import fr.univ_smb.isc.m1.chuck_facts.application.ChuckFactsService;
+import fr.univ_smb.isc.m1.chuck_facts.application.ChessRoyale;
+import fr.univ_smb.isc.m1.chuck_facts.application.ChessRoyaleService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.test.web.servlet.MockMvc;
@@ -14,22 +14,22 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standaloneSetup;
 
-class ChuckFactsControllerTest {
+class ChessRoyaleControllerTest {
 
-    private ChuckFactsService chuckFactsService;
+    private ChessRoyaleService ChessRoyaleService;
     private MockMvc mockMvc;
 
     @BeforeEach
     public void setup() {
-        this.chuckFactsService = mock(ChuckFactsService.class);
-        this.mockMvc = standaloneSetup(new ChuckFactsController(chuckFactsService)).build();
+        this.ChessRoyaleService = mock(ChessRoyaleService.class);
+        this.mockMvc = standaloneSetup(new ChessRoyaleController(ChessRoyaleService)).build();
     }
 
     @Test
     public void shouldPippoTwice() throws Exception {
 
-        when(chuckFactsService.facts())
-                .thenReturn(of(new ChuckFact("pipo-1"), new ChuckFact("pipo-2")));
+        when(ChessRoyaleService.facts())
+                .thenReturn(of(new ChessRoyale("pipo-1"), new ChessRoyale("pipo-2")));
 
         mockMvc.perform(get("/chuck-facts"))
                 .andExpect(status().isOk())

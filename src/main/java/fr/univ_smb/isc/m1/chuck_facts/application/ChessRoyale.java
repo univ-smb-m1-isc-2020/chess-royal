@@ -1,13 +1,13 @@
 package fr.univ_smb.isc.m1.chuck_facts.application;
 
 
-public class ChuckFact {
+public class ChessRoyale {
 
     private Long id;
 
     private String name;
 
-    public ChuckFact(String name) {
+    public ChessRoyale(String name) {
         this.name = name;
     }
 

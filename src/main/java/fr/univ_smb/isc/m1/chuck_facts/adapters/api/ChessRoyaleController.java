@@ -1,6 +1,6 @@
 package fr.univ_smb.isc.m1.chuck_facts.adapters.api;
 
-import fr.univ_smb.isc.m1.chuck_facts.application.ChuckFactsService;
+import fr.univ_smb.isc.m1.chuck_facts.application.ChessRoyaleService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -9,18 +9,18 @@ import java.util.List;
 import static java.util.stream.Collectors.toList;
 
 @RestController
-public class ChuckFactsController {
+public class ChessRoyaleController {
 
-    private final ChuckFactsService chuckFactsService;
+    private final ChessRoyaleService chessRoyaleService;
 
-    public ChuckFactsController(ChuckFactsService chuckFactsService) {
-        this.chuckFactsService = chuckFactsService;
+    public ChessRoyaleController(ChessRoyaleService chessRoyaleService) {
+        this.chessRoyaleService = chessRoyaleService;
     }
 
 
-    @GetMapping(value="/chuck-facts")
+        @GetMapping(value="/chess-royale")
     public List<String> pippos() {
-        return chuckFactsService.facts()
+        return chessRoyaleService.facts()
                 .stream()
                 .map(p-> p.getName())
                 .collect(toList());
