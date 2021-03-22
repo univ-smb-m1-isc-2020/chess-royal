@@ -31,7 +31,7 @@ class ChessRoyaleControllerTest {
         when(ChessRoyaleService.facts())
                 .thenReturn(of(new ChessRoyale("pipo-1"), new ChessRoyale("pipo-2")));
 
-        mockMvc.perform(get("/chuck-facts"))
+        mockMvc.perform(get("/chess-royale"))
                 .andExpect(status().isOk())
                 .andExpect(content().string("[\"pipo-1\",\"pipo-2\"]"));
     }
