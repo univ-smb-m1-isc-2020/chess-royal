@@ -12,10 +12,10 @@
     </parent>
 
     <groupId>fr.univ-smb.isc.m1</groupId>
-    <artifactId>chess-royale</artifactId>
+    <artifactId>chess-royal</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    <name>chess-royale</name>
+    <name>chess-royal</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
