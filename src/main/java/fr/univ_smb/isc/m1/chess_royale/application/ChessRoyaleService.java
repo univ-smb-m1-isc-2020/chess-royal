@@ -19,7 +19,8 @@ public class ChessRoyaleService {
     @PostConstruct
     public void initialize() {
         if (repository.findAll().isEmpty()) {
-            repository.saveAndFlush(new ChessRoyaleUser("Chuck Norris once lost his wedding ring....since then it's been war in Middle Earth"));
+            repository.saveAndFlush(new ChessRoyaleUser("Camille"));
+            repository.saveAndFlush(new ChessRoyaleUser("Hugo"));
         }
     }
 
