@@ -1,7 +1,7 @@
-package fr.univ_smb.isc.m1.chuck_facts.adapters.api;
+package fr.univ_smb.isc.m1.chess_royale.adapters.api;
 
-import fr.univ_smb.isc.m1.chuck_facts.application.ChessRoyale;
-import fr.univ_smb.isc.m1.chuck_facts.application.ChessRoyaleService;
+import fr.univ_smb.isc.m1.chess_royale.application.ChessRoyale;
+import fr.univ_smb.isc.m1.chess_royale.application.ChessRoyaleService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.test.web.servlet.MockMvc;
