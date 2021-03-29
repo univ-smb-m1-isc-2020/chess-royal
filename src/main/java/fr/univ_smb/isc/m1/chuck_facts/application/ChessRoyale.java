@@ -1,4 +1,4 @@
-package fr.univ_smb.isc.m1.chess.royale.application;
+package fr.univ_smb.isc.m1.chuck_facts.application;
 
 
 public class ChessRoyale {
