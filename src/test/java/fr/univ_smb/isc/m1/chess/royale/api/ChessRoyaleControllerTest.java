@@ -1,7 +1,7 @@
-package fr.univ_smb.isc.m1.chuck_facts.adapters.api;
+package fr.univ_smb.isc.m1.chess.royale.api;
 
-import fr.univ_smb.isc.m1.chuck_facts.application.ChessRoyale;
-import fr.univ_smb.isc.m1.chuck_facts.application.ChessRoyaleService;
+import fr.univ_smb.isc.m1.chess.royale.application.ChessRoyale;
+import fr.univ_smb.isc.m1.chess.royale.application.ChessRoyaleService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.test.web.servlet.MockMvc;
@@ -12,7 +12,6 @@ import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standaloneSetup;
 
 class ChessRoyaleControllerTest {
 
