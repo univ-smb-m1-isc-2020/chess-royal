@@ -5,6 +5,7 @@ import fr.univ_smb.isc.m1.chess_royale.infrastructure.persistence.ChessRoyaleUse
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ChessRoyaleService {
@@ -18,6 +19,16 @@ public class ChessRoyaleService {
     public List<ChessRoyale> facts() {
         return List.of(new ChessRoyale("Chuck Norris threw a grenade and killed 50 people, then it exploded."));
         //return repository.findAll();
+    }
+
+    public void delete(Long userId) {
+        Optional<ChessRoyaleUser> fact = repository.findById(userId);
+        fact.ifPresent(repository::delete);
+    }
+
+    public void create(String name) {
+        // FIXME : check if not already present
+        repository.save(new ChessRoyaleUser(name));
     }
 
 }
