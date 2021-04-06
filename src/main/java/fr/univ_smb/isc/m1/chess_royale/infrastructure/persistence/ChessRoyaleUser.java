@@ -10,9 +10,8 @@ public class ChessRoyaleUser {
 
     @Id
     @GeneratedValue
-    private Long id;
-
-    private String name;
+    private Long id; //id in the chess royale db
+    private String name; //username
 
     public ChessRoyaleUser() {
         // keep empty for JPA
