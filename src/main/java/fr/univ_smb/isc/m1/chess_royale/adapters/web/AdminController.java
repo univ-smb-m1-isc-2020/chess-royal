@@ -1,4 +1,4 @@
-package fr.univ_smb.isc.m1.chess_royale.adapters.api;
+package fr.univ_smb.isc.m1.chess_royale.adapters.web;
 
 import fr.univ_smb.isc.m1.chess_royale.application.ChessRoyaleService;
 import org.springframework.stereotype.Controller;
