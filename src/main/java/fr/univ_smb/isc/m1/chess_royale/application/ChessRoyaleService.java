@@ -4,7 +4,6 @@ import fr.univ_smb.isc.m1.chess_royale.infrastructure.persistence.ChessRoyaleRep
 import fr.univ_smb.isc.m1.chess_royale.infrastructure.persistence.ChessRoyaleUser;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.PostConstruct;
 import java.util.List;
 
 @Service
@@ -16,16 +15,9 @@ public class ChessRoyaleService {
         this.repository = repository;
     }
 
-    @PostConstruct
-    public void initialize() {
-        if (repository.findAll().isEmpty()) {
-            repository.saveAndFlush(new ChessRoyaleUser("Camille"));
-            repository.saveAndFlush(new ChessRoyaleUser("Hugo"));
-        }
-    }
-
     public List<ChessRoyale> facts() {
         return List.of(new ChessRoyale("Chuck Norris threw a grenade and killed 50 people, then it exploded."));
+        //return repository.findAll();
     }
 
 }
