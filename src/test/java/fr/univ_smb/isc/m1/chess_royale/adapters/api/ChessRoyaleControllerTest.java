@@ -29,7 +29,7 @@ class ChessRoyaleControllerTest {
     public void shouldPippoTwice() throws Exception {
 
         when(ChessRoyaleService.users())
-                .thenReturn(of(new ChessRoyaleUser("pipo-1"), new ChessRoyaleUser("pipo-2")));
+                .thenReturn(of(new ChessRoyaleUser("pipo-1", "hash"), new ChessRoyaleUser("pipo-2", "hash2")));
 
         mockMvc.perform(get("/chess-royale"))
                 .andExpect(status().isOk())
