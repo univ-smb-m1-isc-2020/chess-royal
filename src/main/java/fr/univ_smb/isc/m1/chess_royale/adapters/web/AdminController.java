@@ -33,10 +33,12 @@ public class AdminController {
     }
 
     @PostMapping("/admin/create")
-    public String pidUserSubmit(@RequestParam(name = "fact") String fact, Principal principal) {
+    public String pidUserSubmit(@RequestParam(name = "name") String name,
+                                @RequestParam(name = "hash") String hash,
+                                Principal principal) {
         //TODO: fix parameters
         String author = principal.getName();
-        chessRoyaleService.create(fact);
+        chessRoyaleService.create(name, hash);
         return "redirect:/admin";
     }
 

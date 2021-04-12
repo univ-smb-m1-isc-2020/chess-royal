@@ -8,6 +8,6 @@ import java.util.List;
 @Repository
 public interface ChessRoyaleRepository extends JpaRepository<ChessRoyaleUser, Long> {
 
-    List<ChessRoyale> findByName(String name);
-    ChessRoyale findById(long id);
+    List<ChessRoyaleUser> findByName(String name);
+    ChessRoyaleUser findById(long id);
 }

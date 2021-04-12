@@ -26,9 +26,9 @@ public class ChessRoyaleService {
         fact.ifPresent(repository::delete);
     }
 
-    public void create(String name) {
+    public void create(String name, String hash) {
         // FIXME : check if not already present
-        repository.save(new ChessRoyaleUser(name));
+        repository.save(new ChessRoyaleUser(name, hash));
     }
 
 }

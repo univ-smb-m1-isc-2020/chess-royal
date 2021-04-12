@@ -1,6 +1,5 @@
 package fr.univ_smb.isc.m1.chess_royale.adapters.api;
 
-import fr.univ_smb.isc.m1.chess_royale.infrastructure.persistence.ChessRoyale;
 import fr.univ_smb.isc.m1.chess_royale.application.ChessRoyaleService;
 import fr.univ_smb.isc.m1.chess_royale.infrastructure.persistence.ChessRoyaleUser;
 import org.junit.jupiter.api.BeforeEach;

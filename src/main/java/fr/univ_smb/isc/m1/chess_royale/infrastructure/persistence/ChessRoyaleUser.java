@@ -12,13 +12,15 @@ public class ChessRoyaleUser {
     @GeneratedValue
     private Long id; //id in the chess royale db
     private String name; //username
+    private String hash; //hashed password
 
     public ChessRoyaleUser() {
         // keep empty for JPA
     }
 
-    public ChessRoyaleUser(String name) {
+    public ChessRoyaleUser(String name, String hash) {
         this.name = name;
+        this.hash = hash;
     }
 
     public Long getId() {
