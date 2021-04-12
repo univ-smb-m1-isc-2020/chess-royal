@@ -13,16 +13,14 @@
         <tr>
             <th th:text="Id"></th>
             <th th:text="Fact"></th>
-            <th th:text="Author"></th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="fact : ${facts}">
-            <td th:text="${fact.id}"></td>
-            <td th:text="${fact.name}"></td>
-            <td th:text="${fact.author}"></td>
+        <tr th:each="user : ${users}">
+            <td th:text="${user.id}"></td>
+            <td th:text="${user.name}"></td>
             <td>
-                <button type="submit" name="factId" th:value="${fact.id}" th:text="Delete"></button>
+                <button type="submit" name="usersId" th:value="${user.id}" th:text="Delete"></button>
             </td>
         </tr>
         </tbody>
@@ -34,7 +32,7 @@
     <table>
         <tbody>
         <tr>
-            <td><input name="fact" type="text" size="140"></td>
+            <td><input name="users" type="text" size="140"></td>
             <td>
                 <button type="submit" th:text="Create"></button>
             </td>
