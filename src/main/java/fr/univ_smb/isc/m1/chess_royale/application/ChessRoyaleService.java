@@ -1,6 +1,5 @@
 package fr.univ_smb.isc.m1.chess_royale.application;
 
-import fr.univ_smb.isc.m1.chess_royale.infrastructure.persistence.ChessRoyale;
 import fr.univ_smb.isc.m1.chess_royale.infrastructure.persistence.ChessRoyaleRepository;
 import fr.univ_smb.isc.m1.chess_royale.infrastructure.persistence.ChessRoyaleUser;
 import org.springframework.stereotype.Service;
@@ -17,9 +16,9 @@ public class ChessRoyaleService {
         this.repository = repository;
     }
 
-    public List<ChessRoyale> facts() {
-        return List.of(new ChessRoyale("Chuck Norris threw a grenade and killed 50 people, then it exploded."));
-        //return repository.findAll();
+    public List<ChessRoyaleUser> users() {
+        //return List.of(new ChessRoyale("This is a chessroyale user."));
+        return repository.findAll();
     }
 
     public void delete(Long userId) {

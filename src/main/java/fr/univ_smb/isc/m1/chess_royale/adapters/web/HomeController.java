@@ -16,7 +16,7 @@ public class HomeController {
 
     @GetMapping(value="/")
     public String home(Model model) {
-        model.addAttribute("facts", chessRoyaleService.facts());
+        model.addAttribute("facts", chessRoyaleService.users());
         return "home";
     }
 

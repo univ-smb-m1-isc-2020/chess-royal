@@ -2,6 +2,7 @@ package fr.univ_smb.isc.m1.chess_royale.adapters.api;
 
 import fr.univ_smb.isc.m1.chess_royale.infrastructure.persistence.ChessRoyale;
 import fr.univ_smb.isc.m1.chess_royale.application.ChessRoyaleService;
+import fr.univ_smb.isc.m1.chess_royale.infrastructure.persistence.ChessRoyaleUser;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.test.web.servlet.MockMvc;
@@ -28,8 +29,8 @@ class ChessRoyaleControllerTest {
     @Test
     public void shouldPippoTwice() throws Exception {
 
-        when(ChessRoyaleService.facts())
-                .thenReturn(of(new ChessRoyale("pipo-1"), new ChessRoyale("pipo-2")));
+        when(ChessRoyaleService.users())
+                .thenReturn(of(new ChessRoyaleUser("pipo-1"), new ChessRoyaleUser("pipo-2")));
 
         mockMvc.perform(get("/chess-royale"))
                 .andExpect(status().isOk())

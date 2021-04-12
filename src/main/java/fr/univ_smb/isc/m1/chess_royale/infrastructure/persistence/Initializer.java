@@ -19,10 +19,10 @@ class Initializer {
         repository.deleteAllInBatch();
 
         if (repository.findAll().isEmpty()) {
-            repository.saveAndFlush(new ChessRoyaleUser("Chuck Norris can divide by zero."));
-            repository.saveAndFlush(new ChessRoyaleUser("Chuck Norris once lost his wedding ring....since then it's been war in Middle Earth"));
-            repository.saveAndFlush(new ChessRoyaleUser("In the Beginning there was nothing ... then Chuck Norris roundhouse kicked nothing and told it to get a job"));
-            repository.saveAndFlush(new ChessRoyaleUser("When God said, “Let there be light!” Chuck said, “Say Please.”"));
+            repository.saveAndFlush(new ChessRoyaleUser("User 1"));
+            repository.saveAndFlush(new ChessRoyaleUser("User 2"));
+            repository.saveAndFlush(new ChessRoyaleUser("User 3"));
+            repository.saveAndFlush(new ChessRoyaleUser("User 4"));
         }
     }
 

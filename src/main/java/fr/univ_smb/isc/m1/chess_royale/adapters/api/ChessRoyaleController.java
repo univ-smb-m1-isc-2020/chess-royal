@@ -20,7 +20,7 @@ public class ChessRoyaleController {
 
     @GetMapping(value="/chess-royale")
     public List<String> pippos() {
-        return chessRoyaleService.facts()
+        return chessRoyaleService.users()
                 .stream()
                 .map(p-> p.getName())
                 .collect(toList());

@@ -21,7 +21,7 @@ public class AdminController {
 
     @GetMapping(value = "/admin")
     public String home(Model model) {
-        model.addAttribute("facts", chessRoyaleService.facts());
+        model.addAttribute("facts", chessRoyaleService.users());
         return "admin";
     }
 
