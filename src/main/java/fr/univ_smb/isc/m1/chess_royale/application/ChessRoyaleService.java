@@ -1,5 +1,6 @@
 package fr.univ_smb.isc.m1.chess_royale.application;
 
+import fr.univ_smb.isc.m1.chess_royale.infrastructure.persistence.ChessRoyale;
 import fr.univ_smb.isc.m1.chess_royale.infrastructure.persistence.ChessRoyaleRepository;
 import fr.univ_smb.isc.m1.chess_royale.infrastructure.persistence.ChessRoyaleUser;
 import org.springframework.stereotype.Service;
