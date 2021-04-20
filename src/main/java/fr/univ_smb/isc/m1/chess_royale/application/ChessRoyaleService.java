@@ -31,4 +31,14 @@ public class ChessRoyaleService {
         repository.save(new ChessRoyaleUser(name, hash));
     }
 
+    public ChessRoyaleUser getUser(Long userId)
+    {
+        return repository.getOne(userId);
+    }
+
+    public void saveUser(ChessRoyaleUser chessRoyaleUser)
+    {
+        repository.save(chessRoyaleUser);
+    }
+
 }

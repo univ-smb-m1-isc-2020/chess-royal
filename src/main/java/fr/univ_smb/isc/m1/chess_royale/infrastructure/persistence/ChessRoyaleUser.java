@@ -13,6 +13,7 @@ public class ChessRoyaleUser {
     private Long id; //id in the chess royale db
     private String name; //username
     private String hash; //hashed password
+    private int score;
 
     public ChessRoyaleUser() {
         // keep empty for JPA
@@ -21,6 +22,16 @@ public class ChessRoyaleUser {
     public ChessRoyaleUser(String name, String hash) {
         this.name = name;
         this.hash = hash;
+        this.score = 0;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void incrementScore()
+    {
+        this.score += 9000;
     }
 
     public Long getId() {

@@ -4,6 +4,7 @@ import fr.univ_smb.isc.m1.chess_royale.application.ChessRoyaleService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static java.util.stream.Collectors.toList;
@@ -18,12 +19,11 @@ public class ChessRoyaleController {
     }
 
 
-    @GetMapping(value="/chess-royale")
+    @GetMapping(value="/list-users")
     public List<String> pippos() {
         return chessRoyaleService.users()
                 .stream()
                 .map(p-> p.getName())
                 .collect(toList());
     }
-
 }

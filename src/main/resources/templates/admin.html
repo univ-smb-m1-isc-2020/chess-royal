@@ -12,7 +12,7 @@
         <thead>
         <tr>
             <th th:text="Id"></th>
-            <th th:text="Fact"></th>
+            <th th:text="Username"></th>
         </tr>
         </thead>
         <tbody>
@@ -20,7 +20,7 @@
             <td th:text="${user.id}"></td>
             <td th:text="${user.name}"></td>
             <td>
-                <button type="submit" name="usersId" th:value="${user.id}" th:text="Delete"></button>
+                <button type="submit" name="userId" th:value="${user.id}" th:text="Delete"></button>
             </td>
         </tr>
         </tbody>
@@ -32,7 +32,16 @@
     <table>
         <tbody>
         <tr>
-            <td><input name="users" type="text" size="140"></td>
+            <td>
+                <label>
+                    <input name="name" type="text" size="50">
+                </label>
+            </td>
+            <td>
+                <label>
+                    <input name="hash" type="text" size="50">
+                </label>
+            </td>
             <td>
                 <button type="submit" th:text="Create"></button>
             </td>

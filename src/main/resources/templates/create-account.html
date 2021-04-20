@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Create a new user account</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link th:href="@{/css/main.css}" rel="stylesheet" />
+</head>
+
+
+
+<body>
+
+<h1>New user : </h1>
+<form action="#" th:action="@{/create-account}" method="post">
+    <table>
+        <tbody>
+        <tr>
+            <td>
+                <label>
+                    <input name="name" type="text" size="50">
+                </label>
+            </td>
+            <td>
+                <label>
+                    <input name="hash" type="text" size="50">
+                </label>
+            </td>
+            <td>
+                <button type="submit" th:text="Create"></button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</form>
+</body>
+</html>
