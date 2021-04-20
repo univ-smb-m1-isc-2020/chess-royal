@@ -1,17 +1,23 @@
-# project kick-off
+# Chess Royale Project
+this is the project for the CI course 
 
- - master branch is now analysed on https://sonarcloud.io/dashboard?id=univ-smb-m1-isc-2020_chuck-facts
+### Launch the postgres locally :
+- cd dev-station
+- docker-compose up
 
+### Launch spring locally :
+- mvn spring-boot:run
 
-Now with a controller
+### Restart the postgres locally :
+- cd dev-station
+- docker-compose down
+- (optional) check it's down with docker ps
+- docker-compose up
 
-application can be run locally with the following command :
+### Sonar cloud
+master branch is analysed on https://sonarcloud.io/dashboard?id=univ-smb-m1-isc-2020_chess-royale
 
-mvn spring-boot:run
-
-(please do make sure you can run maven on command line)
-
+### Actuator
  - actuator endpoints available on http://localhost:8080/actuator/health
- - first controller available here http://localhost:8080/chuck-facts
 
 
