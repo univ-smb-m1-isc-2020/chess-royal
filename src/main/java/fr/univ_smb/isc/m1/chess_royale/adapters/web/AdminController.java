@@ -21,7 +21,7 @@ public class AdminController {
 
     @GetMapping(value = "/admin")
     public String home(Model model) {
-        model.addAttribute("users", chessRoyaleService.users());
+        model.addAllAttributes(chessRoyaleService.users());
         return "admin";
     }
 
@@ -36,7 +36,6 @@ public class AdminController {
     public String pidUserSubmit(@RequestParam(name = "name") String name,
                                 @RequestParam(name = "hash") String hash,
                                 Principal principal) {
-        //TODO: fix parameters
         String author = principal.getName();
         chessRoyaleService.create(name, hash);
         return "redirect:/admin";
