@@ -22,6 +22,9 @@ public class ChessDuel {
     @ManyToOne
     private ChessRoyaleParticipant blackPlayer;
 
+    private boolean whiteVictory;
+    private boolean blackVictory;
+
 //    @ManyToOne
 //    @JoinColumn(name = "person_id",
 //            foreignKey = @ForeignKey(name = "PERSON_ID_FK")

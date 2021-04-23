@@ -17,6 +17,7 @@ public class ChessRoyaleParticipant {
     @ManyToOne
     private ChessRoyaleUser userAccount;
     private int score;//for testing
+    private int lifePoints;
 
     public ChessRoyaleParticipant() {
         // keep empty for JPA

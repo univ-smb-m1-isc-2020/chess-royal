@@ -1,6 +1,8 @@
 package fr.univ_smb.isc.m1.chess_royale.adapters.api;
 
 import fr.univ_smb.isc.m1.chess_royale.application.ChessRoyaleClientService;
+import fr.univ_smb.isc.m1.chess_royale.infrastructure.persistence.ChessRoyaleGame;
+import fr.univ_smb.isc.m1.chess_royale.infrastructure.persistence.ChessRoyaleUser;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,7 +24,8 @@ public class ChessRoyaleController {
         public List<String> listUserNames() {
         return chessRoyaleClientService.users()
                 .stream()
-                .map(p-> p.getName())
+                //.map(p-> p.getName())
+                .map(ChessRoyaleUser::getName)
                 .collect(toList());
     }
 
@@ -31,7 +34,8 @@ public class ChessRoyaleController {
     {
         return chessRoyaleClientService.games()
                 .stream()
-                .map((p->p.getName()))
+                //.map((p->p.getName()))
+                .map(ChessRoyaleGame::getName)
                 .collect(toList());
     }
 }
