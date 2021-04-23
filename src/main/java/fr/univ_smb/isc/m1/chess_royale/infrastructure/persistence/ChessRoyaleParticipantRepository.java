@@ -6,8 +6,8 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface ChessRoyaleRepository extends JpaRepository<ChessRoyaleUser, Long> {
+public interface ChessRoyaleParticipantRepository extends JpaRepository<ChessRoyaleParticipant, Long> {
 
-    List<ChessRoyaleUser> findByName(String name);
-    ChessRoyaleUser findById(long id);
+    List<ChessRoyaleParticipant> findByName(String name);
+    ChessRoyaleParticipant findById(long id);
 }

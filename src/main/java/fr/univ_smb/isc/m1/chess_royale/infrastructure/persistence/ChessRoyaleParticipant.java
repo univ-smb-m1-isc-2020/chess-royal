@@ -4,25 +4,27 @@ package fr.univ_smb.isc.m1.chess_royale.infrastructure.persistence;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
-public class ChessRoyaleUser {
+public class ChessRoyaleParticipant {
 
     @Id
     @GeneratedValue
     private Long id; //id in the chess royale db
     private String name; //username
-    private String hash; //hashed password
-    private int score;//for testing
-    private String lichessAPIToken; //token to access the lichess API token
 
-    public ChessRoyaleUser() {
+    @ManyToOne
+    private ChessRoyaleUser userAccount;
+    private int score;//for testing
+
+    public ChessRoyaleParticipant() {
         // keep empty for JPA
     }
 
-    public ChessRoyaleUser(String name, String hash) {
-        this.name = name;
-        this.hash = hash;
+    public ChessRoyaleParticipant(ChessRoyaleUser userAccount) {
+        this.userAccount = userAccount;
+        this.name = userAccount.getName();
         this.score = 0;
     }
 

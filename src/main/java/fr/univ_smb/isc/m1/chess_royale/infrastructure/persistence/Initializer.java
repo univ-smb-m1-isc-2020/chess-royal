@@ -7,9 +7,9 @@ import javax.annotation.PostConstruct;
 @Service
 class Initializer {
 
-    private final ChessRoyaleRepository repository;
+    private final ChessRoyaleUserRepository repository;
 
-    public Initializer(ChessRoyaleRepository repository) {
+    public Initializer(ChessRoyaleUserRepository repository) {
         this.repository = repository;
     }
 
