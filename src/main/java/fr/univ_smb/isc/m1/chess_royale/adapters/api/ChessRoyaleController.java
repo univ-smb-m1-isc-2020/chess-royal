@@ -19,10 +19,19 @@ public class ChessRoyaleController {
 
 
     @GetMapping(value="/list-users")
-    public List<String> pippos() {
+        public List<String> listUserNames() {
         return chessRoyaleClientService.users()
                 .stream()
                 .map(p-> p.getName())
+                .collect(toList());
+    }
+
+    @GetMapping(value="/list-games")
+        public List<String> listChessRoyaleGames()
+    {
+        return chessRoyaleClientService.games()
+                .stream()
+                .map((p->p.getName()))
                 .collect(toList());
     }
 }

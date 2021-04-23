@@ -1,8 +1,6 @@
 package fr.univ_smb.isc.m1.chess_royale.application;
 
-import fr.univ_smb.isc.m1.chess_royale.infrastructure.persistence.ChessRoyaleParticipantRepository;
-import fr.univ_smb.isc.m1.chess_royale.infrastructure.persistence.ChessRoyaleUserRepository;
-import fr.univ_smb.isc.m1.chess_royale.infrastructure.persistence.ChessRoyaleUser;
+import fr.univ_smb.isc.m1.chess_royale.infrastructure.persistence.*;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,14 +10,27 @@ import java.util.Optional;
 public class ChessRoyaleClientService {
 
     private final ChessRoyaleUserRepository userRepository;
+    private final ChessRoyaleGameRepository gameRepository;
+    private final ChessRoyaleParticipantRepository participantRepository;
 
-    public ChessRoyaleClientService(ChessRoyaleUserRepository repository) {
-        this.userRepository = repository;
+    public ChessRoyaleClientService(ChessRoyaleUserRepository userRepository,
+                                    ChessRoyaleGameRepository gameRepository,
+                                    ChessRoyaleParticipantRepository participantRepository
+    )
+    {
+        this.userRepository = userRepository;
+        this.gameRepository = gameRepository;
+        this.participantRepository = participantRepository;
     }
 
-    public List<ChessRoyaleUser> users() {
-        //return List.of(new ChessRoyale("This is a chessroyale user."));
+    public List<ChessRoyaleUser> users()
+    {
         return userRepository.findAll();
+    }
+
+    public List<ChessRoyaleGame> games()
+    {
+        return gameRepository.findAll();
     }
 
     public void deleteUser(Long userId) {
