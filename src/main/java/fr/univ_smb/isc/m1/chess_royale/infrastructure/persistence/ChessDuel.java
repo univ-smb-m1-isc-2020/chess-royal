@@ -17,10 +17,10 @@ public class ChessDuel {
     private Date startDate;
     private Date endDate;
 
-    //@ForeignKey
-    //private ChessRoyaleParticipant whitePlayer;
-    private Long blackPlayerId;
-
+    @ManyToOne
+    private ChessRoyaleParticipant whitePlayer;
+    @ManyToOne
+    private ChessRoyaleParticipant blackPlayer;
 
 //    @ManyToOne
 //    @JoinColumn(name = "person_id",
@@ -31,15 +31,10 @@ public class ChessDuel {
         // keep empty for JPA
     }
 
-    public ChessDuel(String name, List<ChessRoyaleParticipant> participants) {
-        this.name = name;
+    public ChessDuel(String name) {
+//        this.name = name;
         this.startDate = new Date();
-        this.participants = new HashMap<Long, ChessRoyaleParticipant>();
-
-        for (ChessRoyaleParticipant p : participants)
-        {
-            this.participants.put(p.getId(), p);
-        }
+//        this.participants = new HashMap<Long, ChessRoyaleParticipant>();
     }
 
     public Long getId() {
@@ -50,11 +45,4 @@ public class ChessDuel {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 }
