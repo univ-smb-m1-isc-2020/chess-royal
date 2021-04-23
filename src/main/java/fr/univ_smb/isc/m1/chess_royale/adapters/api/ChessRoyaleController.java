@@ -19,7 +19,6 @@ public class ChessRoyaleController {
         this.chessRoyaleClientService = chessRoyaleClientService;
     }
 
-
     @GetMapping(value="/list-users")
         public List<String> listUserNames() {
         return chessRoyaleClientService.users()

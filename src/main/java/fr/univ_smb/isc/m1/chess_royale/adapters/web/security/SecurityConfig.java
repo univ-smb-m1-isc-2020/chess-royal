@@ -30,7 +30,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginPage("/login-form")
 //                .loginPage("/")
                 .loginProcessingUrl("/perform_login")
-                .defaultSuccessUrl("/admin", true)
+                .defaultSuccessUrl("/admin/test", true)
                 .failureUrl("/");
     }
 
