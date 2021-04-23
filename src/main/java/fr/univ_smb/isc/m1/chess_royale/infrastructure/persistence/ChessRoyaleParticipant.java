@@ -29,7 +29,7 @@ public class ChessRoyaleParticipant {
 
     public ChessRoyaleParticipant(ChessRoyaleUser userAccount) {
         this.userAccount = userAccount;
-        this.name = userAccount.getName();
+        this.name = userAccount.getUsername();
         this.score = 0;
     }
 

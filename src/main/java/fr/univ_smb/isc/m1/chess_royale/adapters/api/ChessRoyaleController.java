@@ -25,7 +25,7 @@ public class ChessRoyaleController {
         return chessRoyaleClientService.users()
                 .stream()
                 //.map(p-> p.getName())
-                .map(ChessRoyaleUser::getName)
+                .map(ChessRoyaleUser::getUsername)
                 .collect(toList());
     }
 

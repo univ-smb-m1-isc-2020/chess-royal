@@ -16,7 +16,7 @@ public class ChessRoyaleUser {
     private Long id;
 
     @Column(unique = true, nullable = false)
-    private String name;
+    private String username;
 
     private String password;
     private String lichessAPIToken; //token to access the lichess API token
@@ -29,13 +29,13 @@ public class ChessRoyaleUser {
     }
 
     public ChessRoyaleUser(String name, String password, String lichessAPIToken) {
-        this.name = name;
+        this.username = name;
         this.password = password;
         this.lichessAPIToken = lichessAPIToken;
     }
 
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 }
