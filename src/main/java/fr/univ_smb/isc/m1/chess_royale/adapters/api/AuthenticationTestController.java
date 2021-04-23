@@ -12,7 +12,6 @@ public class AuthenticationTestController {
             method = RequestMethod.GET
     )
     public ResponseEntity<String> test() {
-        return ResponseEntity.ok("You can only see this after a successful login :)");
+        return ResponseEntity.ok("This page is only visible after a successful login as admin, congrats");
     }
 }
-

@@ -25,6 +25,7 @@ public class ChessRoyaleClientService {
 
     public List<ChessRoyaleUser> users()
     {
+        System.out.println(userRepository.findAll().toString());
         return userRepository.findAll();
     }
 
@@ -40,7 +41,7 @@ public class ChessRoyaleClientService {
 
     public void createUser(String name, String hash, String lichessAPIToken) {
         // FIXME : check if not already present
-        userRepository.save(new ChessRoyaleUser(name, hash, lichessAPIToken));
+        userRepository.save(new ChessRoyaleUser(name));
     }
 
     public ChessRoyaleUser getUser(Long userId)
