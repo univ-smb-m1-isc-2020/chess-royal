@@ -1,10 +1,7 @@
 package fr.univ_smb.isc.m1.chess_royale.infrastructure.persistence;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 @Entity
 public class ChessRoyaleParticipant {
@@ -13,11 +10,18 @@ public class ChessRoyaleParticipant {
     @GeneratedValue
     private Long id; //id in the chess royale db
     private String name; //username
-
-    @ManyToOne
-    private ChessRoyaleUser userAccount;
     private int score;//for testing
     private int lifePoints;
+
+    @ManyToOne
+    @JoinColumn(nullable=false)
+    private ChessRoyaleUser userAccount;
+
+    @ManyToOne
+    @JoinColumn(nullable = false)
+    private ChessRoyaleGame chessRoyaleGame;
+
+    //Constructors
 
     public ChessRoyaleParticipant() {
         // keep empty for JPA

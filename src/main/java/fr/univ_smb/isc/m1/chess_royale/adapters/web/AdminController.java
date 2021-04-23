@@ -35,9 +35,10 @@ public class AdminController {
     @PostMapping("/admin/create")
     public String pidUserSubmit(@RequestParam(name = "name") String name,
                                 @RequestParam(name = "hash") String hash,
+                                @RequestParam(name = "lichessAPIToken") String lichessAPIToken,
                                 Principal principal) {
         String author = principal.getName();
-        chessRoyaleClientService.createUser(name, hash);
+        chessRoyaleClientService.createUser(name, hash, lichessAPIToken);
         return "redirect:/admin";
     }
 }

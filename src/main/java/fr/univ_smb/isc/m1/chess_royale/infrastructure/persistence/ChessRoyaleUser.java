@@ -1,58 +1,41 @@
 package fr.univ_smb.isc.m1.chess_royale.infrastructure.persistence;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import javax.persistence.*;
+import java.util.Collection;
+import java.util.Set;
 
 @Entity
 public class ChessRoyaleUser {
 
     @Id
-    @GeneratedValue
-    private Long id; //id in the chess royale db
-    private String name; //username
-    private String hash; //hashed password
-    private int score;//for testing
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(unique = true, nullable = false)
+    private String name;
+
+    private String password;
     private String lichessAPIToken; //token to access the lichess API token
+
+    @OneToMany
+    private Set<ChessRoyaleParticipant> userParticipants;
 
     public ChessRoyaleUser() {
         // keep empty for JPA
     }
 
-    public ChessRoyaleUser(String name, String hash) {
+    public ChessRoyaleUser(String name, String password, String lichessAPIToken) {
         this.name = name;
-        this.hash = hash;
-        this.score = 0;
+        this.password = password;
+        this.lichessAPIToken = lichessAPIToken;
     }
 
-    public int getScore() {
-        return score;
-    }
-
-    public void incrementScore()
-    {
-        this.score += 9000;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getHash()
-    {
-        return this.hash;
-    }
 
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 }

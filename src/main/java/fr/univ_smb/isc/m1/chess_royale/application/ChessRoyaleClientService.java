@@ -38,9 +38,9 @@ public class ChessRoyaleClientService {
         fact.ifPresent(userRepository::delete);
     }
 
-    public void createUser(String name, String hash) {
+    public void createUser(String name, String hash, String lichessAPIToken) {
         // FIXME : check if not already present
-        userRepository.save(new ChessRoyaleUser(name, hash));
+        userRepository.save(new ChessRoyaleUser(name, hash, lichessAPIToken));
     }
 
     public ChessRoyaleUser getUser(Long userId)

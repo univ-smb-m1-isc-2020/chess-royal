@@ -20,7 +20,6 @@
         <tr th:each="user : ${users}">
             <td th:text="${user.id}"></td>
             <td th:text="${user.name}"></td>
-            <td th:text="${user.score}"></td>
             <td>
                 <button type="submit" name="userId" th:value="${user.id}" th:text="Delete"></button>
             </td>
