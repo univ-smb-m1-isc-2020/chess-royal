@@ -31,7 +31,7 @@ class ChessRoyaleControllerTest {
         when(ChessRoyaleClientService.users())
                 .thenReturn(of(new ChessRoyaleUser("pipo-1", "hash"), new ChessRoyaleUser("pipo-2", "hash2")));
 
-        mockMvc.perform(get("/chess-royale"))
+        mockMvc.perform(get("/list-users"))
                 .andExpect(status().isOk())
                 .andExpect(content().string("[\"pipo-1\",\"pipo-2\"]"));
     }

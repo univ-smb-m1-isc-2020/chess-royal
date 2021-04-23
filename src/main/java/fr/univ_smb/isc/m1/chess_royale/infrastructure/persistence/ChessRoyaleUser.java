@@ -43,6 +43,11 @@ public class ChessRoyaleUser {
         this.id = id;
     }
 
+    public String getHash()
+    {
+        return this.hash;
+    }
+
     public String getName() {
         return name;
     }
