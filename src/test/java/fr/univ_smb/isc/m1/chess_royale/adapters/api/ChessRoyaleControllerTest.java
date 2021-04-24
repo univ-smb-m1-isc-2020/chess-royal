@@ -30,7 +30,7 @@ class ChessRoyaleControllerTest {
     }
 
     @Test
-    public void shouldPippoTwice() throws Exception {
+    void shouldPippoTwice() throws Exception {
 
         when(ChessRoyaleClientService.users())
                 .thenReturn(of(
@@ -43,7 +43,7 @@ class ChessRoyaleControllerTest {
     }
 
     @Test
-    public void shouldReturnGamesThreeTimes() throws Exception {
+    void shouldReturnGamesThreeTimes() throws Exception {
 
         when(ChessRoyaleClientService.games())
                 .thenReturn(of(

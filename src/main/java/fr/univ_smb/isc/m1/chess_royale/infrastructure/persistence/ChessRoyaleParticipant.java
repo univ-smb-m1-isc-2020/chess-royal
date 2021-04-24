@@ -2,9 +2,10 @@ package fr.univ_smb.isc.m1.chess_royale.infrastructure.persistence;
 
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
-public class ChessRoyaleParticipant {
+public class ChessRoyaleParticipant implements Serializable {
 
     @Id
     @GeneratedValue

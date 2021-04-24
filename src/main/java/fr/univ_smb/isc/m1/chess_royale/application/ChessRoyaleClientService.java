@@ -25,7 +25,6 @@ public class ChessRoyaleClientService {
 
     public List<ChessRoyaleUser> users()
     {
-        System.out.println(userRepository.findAll().toString());
         return userRepository.findAll();
     }
 

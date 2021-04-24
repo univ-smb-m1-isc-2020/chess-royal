@@ -4,7 +4,6 @@ import fr.univ_smb.isc.m1.chess_royale.infrastructure.persistence.*;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ChessRoyaleServerService {
@@ -24,7 +23,6 @@ public class ChessRoyaleServerService {
     }
 
     public List<ChessRoyaleUser> users() {
-        //return List.of(new ChessRoyale("This is a chessroyale user."));
         return userRepository.findAll();
     }
 
@@ -35,6 +33,7 @@ public class ChessRoyaleServerService {
 
     public List<ChessRoyaleParticipant> getParticipants(Long gameId)
     {
+        //FIXME: do it by game ID
         //return participantRepository.findById(gameId);
         return participantRepository.findAll();
     }

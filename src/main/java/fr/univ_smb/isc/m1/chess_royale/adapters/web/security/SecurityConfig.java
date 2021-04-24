@@ -2,7 +2,6 @@ package fr.univ_smb.isc.m1.chess_royale.adapters.web.security;
 
 import fr.univ_smb.isc.m1.chess_royale.infrastructure.persistence.AppAuthProvider;
 import fr.univ_smb.isc.m1.chess_royale.application.ChessRoyaleUserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -45,7 +44,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
     public AuthenticationProvider getProvider(ChessRoyaleUserService userDetailsService) {
-        AppAuthProvider provider = new AppAuthProvider();
+        var provider = new AppAuthProvider();
         provider.setUserDetailsService(userDetailsService);
         return provider;
     }
