@@ -27,7 +27,7 @@ public class AdminController {
 
     @PostMapping(value = "/admin/delete", params = {"userId"})
     public String removeRow(HttpServletRequest req) {
-        Long userId = Long.valueOf(req.getParameter("userId"));
+        var userId = Long.valueOf(req.getParameter("userId"));
         chessRoyaleClientService.deleteUser(userId);
         return "redirect:/admin";
     }
@@ -37,7 +37,7 @@ public class AdminController {
                                 @RequestParam(name = "hash") String hash,
                                 @RequestParam(name = "lichessAPIToken") String lichessAPIToken,
                                 Principal principal) {
-        String author = principal.getName();
+        //String author = principal.getName();
         chessRoyaleClientService.createUser(name, hash, lichessAPIToken);
         return "redirect:/admin";
     }
