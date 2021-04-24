@@ -23,7 +23,6 @@ public class ChessRoyaleController {
         public List<String> listUserNames() {
         return chessRoyaleClientService.users()
                 .stream()
-                //.map(p-> p.getName())
                 .map(ChessRoyaleUser::getUsername)
                 .collect(toList());
     }
@@ -33,7 +32,6 @@ public class ChessRoyaleController {
     {
         return chessRoyaleClientService.games()
                 .stream()
-                //.map((p->p.getName()))
                 .map(ChessRoyaleGame::getName)
                 .collect(toList());
     }
