@@ -19,10 +19,10 @@ class Initializer {
         repository.deleteAllInBatch();
 
         if (repository.findAll().isEmpty()) {
-            repository.saveAndFlush(new ChessRoyaleUser("User 1"));
-            repository.saveAndFlush(new ChessRoyaleUser("User 2"));
-            repository.saveAndFlush(new ChessRoyaleUser("User 3"));
-            repository.saveAndFlush(new ChessRoyaleUser("User 4"));
+            repository.saveAndFlush(new ChessRoyaleUser("User 1", "none"));
+            repository.saveAndFlush(new ChessRoyaleUser("User 2", "none"));
+            repository.saveAndFlush(new ChessRoyaleUser("User 3", "none"));
+            repository.saveAndFlush(new ChessRoyaleUser("User 4", "none"));
         }
     }
 

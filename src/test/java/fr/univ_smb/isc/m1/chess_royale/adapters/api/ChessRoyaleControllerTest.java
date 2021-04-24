@@ -34,8 +34,8 @@ class ChessRoyaleControllerTest {
 
         when(ChessRoyaleClientService.users())
                 .thenReturn(of(
-                        new ChessRoyaleUser("pipo-1"),
-                        new ChessRoyaleUser("pipo-2")));
+                        new ChessRoyaleUser("pipo-1", "test"),
+                        new ChessRoyaleUser("pipo-2", "test")));
 
         mockMvc.perform(get("/list-users"))
                 .andExpect(status().isOk())

@@ -41,7 +41,7 @@ public class ChessRoyaleClientService {
 
     public void createUser(String name, String hash, String lichessAPIToken) {
         // FIXME : check if not already present
-        userRepository.save(new ChessRoyaleUser(name));
+        userRepository.save(new ChessRoyaleUser(name, hash));
     }
 
     public ChessRoyaleUser getUser(Long userId)

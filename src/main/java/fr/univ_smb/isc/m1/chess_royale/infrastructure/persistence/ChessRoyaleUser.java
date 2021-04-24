@@ -29,10 +29,10 @@ public class ChessRoyaleUser implements UserDetails {
         // keep empty for JPA
     }
 
-    public ChessRoyaleUser(String username) {
+    public ChessRoyaleUser(String username, String password) {
         this.username = username;
 
-        this.password = "none";
+        this.password = password;
     }
 
     public Long getId() {
