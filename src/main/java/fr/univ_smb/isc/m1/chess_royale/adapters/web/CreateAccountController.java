@@ -27,18 +27,17 @@ public class CreateAccountController {
 
     @GetMapping(value="/create-account/create")
     public String pidUserSubmit(@RequestParam(name = "name") String name,
-                                @RequestParam(name = "hash") String hash
+                                @RequestParam(name = "hash") String hash,
+                                @RequestParam(name = "lichessAPIToken") String lichessAPIToken
                                 ) {
-        //String author = principal.getName();
-        chessRoyaleClientService.createUser(name, hash);
+        chessRoyaleClientService.createUser(name, hash, lichessAPIToken);
         return "redirect:/create-account";
     }
 
     @PostMapping(value = "/create-account/increment-score", params = {"userId"})
     public String incrementUserScore(HttpServletRequest req) {
-        Long userId = Long.valueOf(req.getParameter("userId"));
+        var userId = Long.valueOf(req.getParameter("userId"));
         ChessRoyaleUser userToUpdate = chessRoyaleClientService.getUser(userId);
-        userToUpdate.incrementScore();
         chessRoyaleClientService.saveUser(userToUpdate);
         return "redirect:/create-account";
     }

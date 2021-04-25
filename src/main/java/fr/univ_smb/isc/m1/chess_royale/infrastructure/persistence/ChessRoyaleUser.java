@@ -1,38 +1,37 @@
 package fr.univ_smb.isc.m1.chess_royale.infrastructure.persistence;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Set;
 
 @Entity
-public class ChessRoyaleUser {
+public class ChessRoyaleUser implements UserDetails {
 
     @Id
-    @GeneratedValue
-    private Long id; //id in the chess royale db
-    private String name; //username
-    private String hash; //hashed password
-    private int score;//for testing
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(unique = true, nullable = false)
+    private String username;
+
+    private String password;
     private String lichessAPIToken; //token to access the lichess API token
+
+    @OneToMany
+    private Set<ChessRoyaleParticipant> userParticipants;
 
     public ChessRoyaleUser() {
         // keep empty for JPA
     }
 
-    public ChessRoyaleUser(String name, String hash) {
-        this.name = name;
-        this.hash = hash;
-        this.score = 0;
-    }
+    public ChessRoyaleUser(String username, String password) {
+        this.username = username;
 
-    public int getScore() {
-        return score;
-    }
-
-    public void incrementScore()
-    {
-        this.score += 9000;
+        this.password = password;
     }
 
     public Long getId() {
@@ -43,16 +42,72 @@ public class ChessRoyaleUser {
         this.id = id;
     }
 
-    public String getHash()
-    {
-        return this.hash;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public String getName() {
-        return name;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getLichessAPIToken() {
+        return lichessAPIToken;
+    }
+
+    public void setLichessAPIToken(String lichessAPIToken) {
+        this.lichessAPIToken = lichessAPIToken;
+    }
+
+    public Set<ChessRoyaleParticipant> getUserParticipants() {
+        return userParticipants;
+    }
+
+    public void setUserParticipants(Set<ChessRoyaleParticipant> userParticipants) {
+        this.userParticipants = userParticipants;
+    }
+
+    @Override
+    public String toString() {
+        return "ChessRoyaleUser{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", lichessAPIToken='" + lichessAPIToken + '\'' +
+                ", userParticipants=" + userParticipants +
+                '}';
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return Collections.emptyList();
+    }
+
+    @Override
+    public String getPassword() {
+        return null;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return false;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return false;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return false;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return false;
     }
 }

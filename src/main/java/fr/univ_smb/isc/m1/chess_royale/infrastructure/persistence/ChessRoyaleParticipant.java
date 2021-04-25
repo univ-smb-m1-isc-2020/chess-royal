@@ -1,22 +1,28 @@
 package fr.univ_smb.isc.m1.chess_royale.infrastructure.persistence;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
-public class ChessRoyaleParticipant {
+public class ChessRoyaleParticipant implements Serializable {
 
     @Id
     @GeneratedValue
     private Long id; //id in the chess royale db
     private String name; //username
+    private int score;//for testing
+    private int lifePoints;
 
     @ManyToOne
+    @JoinColumn(nullable=false)
     private ChessRoyaleUser userAccount;
-    private int score;//for testing
+
+    @ManyToOne
+    @JoinColumn(nullable = false)
+    private ChessRoyaleGame chessRoyaleGame;
+
+    //Constructors
 
     public ChessRoyaleParticipant() {
         // keep empty for JPA
@@ -24,7 +30,7 @@ public class ChessRoyaleParticipant {
 
     public ChessRoyaleParticipant(ChessRoyaleUser userAccount) {
         this.userAccount = userAccount;
-        this.name = userAccount.getName();
+        this.name = userAccount.getUsername();
         this.score = 0;
     }
 

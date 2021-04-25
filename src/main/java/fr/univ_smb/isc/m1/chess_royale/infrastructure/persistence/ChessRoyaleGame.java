@@ -16,6 +16,7 @@ public class ChessRoyaleGame {
     private String name; //username
     private Date startDate;
 
+    //FIXME
     @OneToMany
     private Map<Long, ChessRoyaleParticipant> participants; //map of chessRoyaleParticipants based on their id
 

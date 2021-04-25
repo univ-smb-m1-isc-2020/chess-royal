@@ -2,11 +2,7 @@ package fr.univ_smb.isc.m1.chess_royale.infrastructure.persistence;
 
 
 import javax.persistence.*;
-import javax.servlet.annotation.MultipartConfig;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 @Entity
 public class ChessDuel {
@@ -21,6 +17,9 @@ public class ChessDuel {
     private ChessRoyaleParticipant whitePlayer;
     @ManyToOne
     private ChessRoyaleParticipant blackPlayer;
+
+    private boolean whiteVictory;
+    private boolean blackVictory;
 
 //    @ManyToOne
 //    @JoinColumn(name = "person_id",
@@ -45,4 +44,51 @@ public class ChessDuel {
         this.id = id;
     }
 
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
+    }
+
+    public ChessRoyaleParticipant getWhitePlayer() {
+        return whitePlayer;
+    }
+
+    public void setWhitePlayer(ChessRoyaleParticipant whitePlayer) {
+        this.whitePlayer = whitePlayer;
+    }
+
+    public ChessRoyaleParticipant getBlackPlayer() {
+        return blackPlayer;
+    }
+
+    public void setBlackPlayer(ChessRoyaleParticipant blackPlayer) {
+        this.blackPlayer = blackPlayer;
+    }
+
+    public boolean isWhiteVictory() {
+        return whiteVictory;
+    }
+
+    public void setWhiteVictory(boolean whiteVictory) {
+        this.whiteVictory = whiteVictory;
+    }
+
+    public boolean isBlackVictory() {
+        return blackVictory;
+    }
+
+    public void setBlackVictory(boolean blackVictory) {
+        this.blackVictory = blackVictory;
+    }
 }

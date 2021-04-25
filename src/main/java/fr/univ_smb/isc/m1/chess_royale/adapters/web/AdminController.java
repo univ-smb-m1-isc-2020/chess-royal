@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
-import java.security.Principal;
 
 @Controller
 public class AdminController {
@@ -27,7 +26,7 @@ public class AdminController {
 
     @PostMapping(value = "/admin/delete", params = {"userId"})
     public String removeRow(HttpServletRequest req) {
-        Long userId = Long.valueOf(req.getParameter("userId"));
+        var userId = Long.valueOf(req.getParameter("userId"));
         chessRoyaleClientService.deleteUser(userId);
         return "redirect:/admin";
     }
@@ -35,9 +34,9 @@ public class AdminController {
     @PostMapping("/admin/create")
     public String pidUserSubmit(@RequestParam(name = "name") String name,
                                 @RequestParam(name = "hash") String hash,
-                                Principal principal) {
-        String author = principal.getName();
-        chessRoyaleClientService.createUser(name, hash);
+                                @RequestParam(name = "lichessAPIToken") String lichessAPIToken)
+    {
+        chessRoyaleClientService.createUser(name, hash, lichessAPIToken);
         return "redirect:/admin";
     }
 }

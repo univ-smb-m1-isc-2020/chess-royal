@@ -1,7 +1,10 @@
 package fr.univ_smb.isc.m1.chess_royale.adapters.web.security;
 
+import fr.univ_smb.isc.m1.chess_royale.infrastructure.persistence.AppAuthProvider;
+import fr.univ_smb.isc.m1.chess_royale.application.ChessRoyaleUserService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -16,7 +19,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()
-                .withUser("admin").password(passwordEncoder().encode("chess-royale")).roles("ADMIN");
+                .withUser("admin").password(passwordEncoder().encode("chess")).roles("ADMIN");
     }
 
     @Override
@@ -30,12 +33,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginPage("/login-form")
 //                .loginPage("/")
                 .loginProcessingUrl("/perform_login")
-                .defaultSuccessUrl("/admin", true)
+                .defaultSuccessUrl("/admin/test", true)
                 .failureUrl("/");
     }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public AuthenticationProvider getProvider(ChessRoyaleUserService userDetailsService) {
+        var provider = new AppAuthProvider();
+        provider.setUserDetailsService(userDetailsService);
+        return provider;
     }
 }
