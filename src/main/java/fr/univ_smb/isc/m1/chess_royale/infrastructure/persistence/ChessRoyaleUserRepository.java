@@ -12,4 +12,6 @@ public interface ChessRoyaleUserRepository extends JpaRepository<ChessRoyaleUser
     @Query(" select u from ChessRoyaleUser u " +
             " where u.username = ?1")
     Optional<ChessRoyaleUser> findUserWithName(String username);
+
+    Optional<ChessRoyaleUser> findByUsername(String username);
 }

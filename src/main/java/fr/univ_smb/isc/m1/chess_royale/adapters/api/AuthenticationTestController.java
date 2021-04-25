@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.security.Principal;
 
 @RestController
-@RequestMapping("/admin/test")
+@RequestMapping("/hello/test")
 public class AuthenticationTestController {
     @GetMapping
     public ResponseEntity<String> test(Principal principal) {

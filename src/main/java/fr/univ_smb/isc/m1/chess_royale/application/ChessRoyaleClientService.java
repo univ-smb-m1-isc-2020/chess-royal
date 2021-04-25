@@ -1,6 +1,8 @@
 package fr.univ_smb.isc.m1.chess_royale.application;
 
 import fr.univ_smb.isc.m1.chess_royale.infrastructure.persistence.*;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,6 +14,8 @@ public class ChessRoyaleClientService {
     private final ChessRoyaleUserRepository userRepository;
     private final ChessRoyaleGameRepository gameRepository;
     private final ChessRoyaleParticipantRepository participantRepository;
+
+    final private PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     public ChessRoyaleClientService(ChessRoyaleUserRepository userRepository,
                                     ChessRoyaleGameRepository gameRepository,
@@ -40,7 +44,7 @@ public class ChessRoyaleClientService {
 
     public void createUser(String name, String hash, String lichessAPIToken) {
         // FIXME : check if not already present
-        userRepository.save(new ChessRoyaleUser(name, hash));
+        userRepository.save(new ChessRoyaleUser(name, this.passwordEncoder.encode(hash)));
     }
 
     public ChessRoyaleUser getUser(Long userId)
