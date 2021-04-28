@@ -2,7 +2,6 @@ package fr.univ_smb.isc.m1.chess_royale.adapters.web.security;
 
 import fr.univ_smb.isc.m1.chess_royale.infrastructure.persistence.AppAuthProvider;
 import fr.univ_smb.isc.m1.chess_royale.application.ChessRoyaleUserService;
-import fr.univ_smb.isc.m1.chess_royale.infrastructure.persistence.ChessRoyaleUserRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;

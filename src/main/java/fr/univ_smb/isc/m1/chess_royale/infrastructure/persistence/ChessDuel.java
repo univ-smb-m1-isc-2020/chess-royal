@@ -48,7 +48,7 @@ public class ChessDuel {
 
     public void checkIfOver()
     {
-        //TODO: some request to the Lichess API to change result
+        //need some request to the Lichess API to change result
         this.result = ResultType.BLACK_VICTORY;
         this.endDate = new Date();
         this.updateScores();

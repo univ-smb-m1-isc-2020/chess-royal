@@ -12,7 +12,7 @@ public class HelloRESTController
 {
     @GetMapping("user")
     public String helloUser(Principal principal) {
-        return "Hello : " + principal.getName() +" \n\n\n " + principal.toString();
+        return "Hello user : " + principal.getName() +" \n\n\n " + principal.toString();
     }
 
     @GetMapping("admin")
