@@ -71,7 +71,7 @@ class ChessRoyaleUserTest {
 
     @Test
     void setLichessAPIToken() {
-        user.setLichessAPIToken("toats");
+        user.setLichessAPIToken("toast");
 
         assertEquals(user.getLichessAPIToken(), "toast");
     }
