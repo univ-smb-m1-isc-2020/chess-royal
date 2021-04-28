@@ -13,13 +13,14 @@
         <tr>
             <th th:text="Id"></th>
             <th th:text="Username"></th>
-            <th th:text="Score"></th>
+            <th th:text="Token"></th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="user : ${users}">
             <td th:text="${user.id}"></td>
             <td th:text="${user.username}"></td>
+            <td th:text="${user.lichessAPIToken}"></td>
             <td>
                 <button type="submit" name="userId" th:value="${user.id}" th:text="Delete"></button>
             </td>
@@ -28,19 +29,24 @@
     </table>
 </form>
 
-<h1>New Fact : </h1>
+<h1>Create a user : </h1>
 <form action="#" th:action="@{/admin/create}" method="post">
     <table>
         <tbody>
         <tr>
             <td>
                 <label>
-                    <input name="name" type="text" size="50">
+                    <input name="name" type="text" size="30">
                 </label>
             </td>
             <td>
                 <label>
-                    <input name="hash" type="text" size="50">
+                    <input name="hash" type="text" size="30">
+                </label>
+            </td>
+            <td>
+                <label>
+                    <input name="lichessAPIToken" type="text" size="30">
                 </label>
             </td>
             <td>

@@ -30,8 +30,14 @@ public class CreateAccountController {
                                 @RequestParam(name = "hash") String hash,
                                 @RequestParam(name = "lichessAPIToken") String lichessAPIToken
                                 ) {
-        chessRoyaleClientService.createUser(name, hash, lichessAPIToken);
-        return "redirect:/create-account";
+        try{
+            chessRoyaleClientService.createUser(name, hash, lichessAPIToken);
+            return "redirect:/create-account";
+        }
+        catch (Exception e)
+        {
+            return "redirect:/error-username-already-taken";
+        }
     }
 
     @PostMapping(value = "/create-account/increment-score", params = {"userId"})

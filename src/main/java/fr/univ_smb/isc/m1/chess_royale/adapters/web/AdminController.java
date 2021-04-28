@@ -36,7 +36,13 @@ public class AdminController {
                                 @RequestParam(name = "hash") String hash,
                                 @RequestParam(name = "lichessAPIToken") String lichessAPIToken)
     {
-        String result = chessRoyaleClientService.createUser(name, hash, lichessAPIToken);
-        return "redirect:/admin";
+        try{
+            chessRoyaleClientService.createUser(name, hash, lichessAPIToken);
+            return "redirect:/admin";
+        }
+        catch (Exception e)
+        {
+            return "redirect:/error-username-already-taken";
+        }
     }
 }

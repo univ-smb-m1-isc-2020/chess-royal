@@ -1,6 +1,7 @@
 package fr.univ_smb.isc.m1.chess_royale.application;
 
 import fr.univ_smb.isc.m1.chess_royale.infrastructure.persistence.*;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -42,16 +43,14 @@ public class ChessRoyaleClientService {
         fact.ifPresent(userRepository::delete);
     }
 
-    public String createUser(String name, String hash, String lichessAPIToken) {
+    public void createUser(String name, String hash, String lichessAPIToken) throws Exception {
         Optional<ChessRoyaleUser> user = userRepository.findByUsername(name);
-        if (user.isEmpty())
-        {
+        if (user.isEmpty()) {
             userRepository.save(new ChessRoyaleUser(name, this.passwordEncoder.encode(hash), lichessAPIToken));
-            return "Success";
         }
         else
         {
-            return "Error, username " + name + " already taken";
+            throw new Exception("Username already taken :" + name);
         }
     }
 
