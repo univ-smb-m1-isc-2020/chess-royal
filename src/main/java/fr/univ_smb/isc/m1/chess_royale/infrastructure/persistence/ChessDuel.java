@@ -7,7 +7,7 @@ import java.util.Date;
 @Entity
 public class ChessDuel {
 
-    private enum ResultType
+    public enum ResultType
     {
         IN_PROGRESS,
         BLACK_VICTORY,
