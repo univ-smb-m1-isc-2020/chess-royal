@@ -42,9 +42,27 @@ public class ChessRoyaleClientService {
         fact.ifPresent(userRepository::delete);
     }
 
-    public void createUser(String name, String hash, String lichessAPIToken) {
-        // FIXME : check if not already present
-        userRepository.save(new ChessRoyaleUser(name, this.passwordEncoder.encode(hash), lichessAPIToken));
+    public String createUser(String name, String hash, String lichessAPIToken) {
+        Optional<ChessRoyaleUser> user = userRepository.findByUsername(name);
+        if (user.isEmpty())
+        {
+            userRepository.save(new ChessRoyaleUser(name, this.passwordEncoder.encode(hash), lichessAPIToken));
+            return "Success";
+        }
+        else
+        {
+            return "Error, username " + name + " already taken";
+        }
+    }
+
+    public void subscribeUserToGame(ChessRoyaleUser user, ChessRoyaleGame game)
+    {
+        ChessRoyaleParticipant participant = new ChessRoyaleParticipant(user);
+        participant.subscribe(game);
+
+        //Persist
+        participantRepository.save(participant);
+        gameRepository.save(game);
     }
 
     public ChessRoyaleUser getUser(Long userId)

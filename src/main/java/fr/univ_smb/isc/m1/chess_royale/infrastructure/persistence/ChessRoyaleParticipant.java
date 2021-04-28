@@ -53,14 +53,6 @@ public class ChessRoyaleParticipant implements Serializable {
         this.id = id;
     }
 
-    public String getAccountUsername() {
-        return accountUsername;
-    }
-
-    public void setAccountUsername(String accountUsername) {
-        this.accountUsername = accountUsername;
-    }
-
     public int getScore() {
         return score;
     }
@@ -71,17 +63,5 @@ public class ChessRoyaleParticipant implements Serializable {
 
     public int getLifePoints() {
         return lifePoints;
-    }
-
-    public void setLifePoints(int lifePoints) {
-        this.lifePoints = lifePoints;
-    }
-
-    public List<ChessDuel> getChessDuels() {
-        return chessDuels;
-    }
-
-    public void setChessDuels(List<ChessDuel> chessDuels) {
-        this.chessDuels = chessDuels;
     }
 }

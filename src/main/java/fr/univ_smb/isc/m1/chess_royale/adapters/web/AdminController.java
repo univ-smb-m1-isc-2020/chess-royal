@@ -36,7 +36,7 @@ public class AdminController {
                                 @RequestParam(name = "hash") String hash,
                                 @RequestParam(name = "lichessAPIToken") String lichessAPIToken)
     {
-        chessRoyaleClientService.createUser(name, hash, lichessAPIToken);
+        String result = chessRoyaleClientService.createUser(name, hash, lichessAPIToken);
         return "redirect:/admin";
     }
 }
