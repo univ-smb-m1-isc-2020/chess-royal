@@ -13,13 +13,11 @@ public class ChessRoyaleServerService {
     private final ChessRoyaleGameRepository gameRepository;
 
     public ChessRoyaleServerService(ChessRoyaleUserRepository userRepository,
-                                    ChessRoyaleGameRepository gameRepository,
-                                    ChessRoyaleParticipantRepository participantRepository
+                                    ChessRoyaleGameRepository gameRepository
                                     )
     {
         this.userRepository = userRepository;
         this.gameRepository = gameRepository;
-        this.participantRepository = participantRepository;
     }
 
     public List<ChessRoyaleUser> users() {
