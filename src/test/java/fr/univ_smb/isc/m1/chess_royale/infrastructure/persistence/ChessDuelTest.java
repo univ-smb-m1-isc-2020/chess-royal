@@ -26,15 +26,16 @@ class ChessDuelTest {
     }
 
     @Test
+    void should_return_is_over()
+    {
+        duel.setResult(ChessDuel.ResultType.WHITE_VICTORY);
+        assertTrue(duel.isOver());
+    }
+
+    @Test
     void checkIfOver() {
         duel.checkIfOver();
         assertNotEquals(null, duel.getEndDate());
-    }
-
-    void checkIfNotOver()
-    {
-        duel.setResult(ChessDuel.ResultType.WHITE_VICTORY);
-        assertTrue(duel.checkIfOver();
     }
 
     @Test
