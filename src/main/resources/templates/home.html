@@ -8,30 +8,28 @@
 </head>
 <body>
 
-<div class="container col-xl-10 col-xxl-8 px-4 py-5">
-    <div class="row align-items-center g-5 py-5">
-        <div class="col-lg-7 text-center text-lg-start">
-            <h1 class="display-4 fw-bold lh-1 mb-3">Chess Royale</h1>
-            <p class="col-lg-10 fs-4">Chess Royale est un projet de partie d'échecs en Battle Royale.
-            Plusieurs joueurs devant s'affronter, celui qui a le meilleur score à la fin du timer remporte la victoire.</p>
-        </div>
-        <div class="col-10 mx-auto col-lg-5">
-            <form class="p-5 border rounded-3 bg-light" action="perform_login" method='POST'>
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
-                    <label for="floatingInput">Nom d'utilisateur</label>
-                </div>
-                <div class="form-floating mb-3">
-                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                    <label for="floatingPassword">Mot de passe</label>
-                </div>
-                <button class="w-100 btn btn-lg btn-primary" name="submit" type="submit" value="submit">Se connecter</button>
-                <hr class="my-4">
-                <small class="text-muted"><a href="#" class="link-primary">Je n'ai pas de compte.</a></small>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Chess Royale</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+<!--                    <a class="nav-link" aria-current="page" href="#" th:text="connectedUserName"> </a>-->
+                    <p class="nav-link" aria-current="page" th:text="${connectedUserName}"></p>
+                </li>
+<!--                <li class="nav-item">-->
+<!--                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>-->
+<!--                </li>-->
+            </ul>
+            <form action="#" th:action="@{/logout}" method="get">
+                <button type="submit" class="btn btn-primary" name="submit" value="submit" th:text="Logout">Se deconnecter</button>
             </form>
         </div>
     </div>
-</div>
+</nav>
 
 <!--<ul class="nav nav-pills">-->
 <!--    <li class="nav-item"><a href="#" class="nav-link active">Home</a></li>-->
@@ -44,7 +42,8 @@
 <ul>
     <li th:each="user : ${users}" th:text="${user.username}"></li>
 </ul>
-
+<hr class="my-4">
+<p th:text="${connectedUserName}"></p>
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="../static/bootstrap/js/bootstrap.js" th:href="@{/bootstrap/js/bootstrap.js}"></script>
