@@ -5,6 +5,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -61,6 +62,19 @@ public class ChessRoyaleClientService {
         //Persist
         participantRepository.save(participant);
         gameRepository.save(game);
+    }
+
+    public List<ChessRoyaleParticipant> getParticipants(Long gameId)
+    {
+        var game = gameRepository.findById(gameId);
+        if (game.isPresent())
+        {
+            return game.get().getParticipants();
+        }
+        else
+        {
+            return new ArrayList<>();
+        }
     }
 
     public ChessRoyaleUser getUser(Long userId)
