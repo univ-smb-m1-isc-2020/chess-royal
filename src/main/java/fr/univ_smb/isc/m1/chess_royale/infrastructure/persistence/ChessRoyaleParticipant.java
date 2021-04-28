@@ -3,6 +3,8 @@ package fr.univ_smb.isc.m1.chess_royale.infrastructure.persistence;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class ChessRoyaleParticipant implements Serializable {
@@ -10,37 +12,37 @@ public class ChessRoyaleParticipant implements Serializable {
     @Id
     @GeneratedValue
     private Long id; //id in the chess royale db
-    private String name; //username
+    private String accountUsername;
+
     private int score;//for testing
     private int lifePoints;
 
-    @ManyToOne
-    @JoinColumn(nullable=false)
-    private ChessRoyaleUser userAccount;
-
-    @ManyToOne
-    @JoinColumn(nullable = false)
-    private ChessRoyaleGame chessRoyaleGame;
+    @OneToMany
+    private List<ChessDuel> chessDuels = new ArrayList<>();
 
     //Constructors
-
     public ChessRoyaleParticipant() {
         // keep empty for JPA
     }
 
-    public ChessRoyaleParticipant(ChessRoyaleUser userAccount) {
-        this.userAccount = userAccount;
-        this.name = userAccount.getUsername();
+    public ChessRoyaleParticipant(ChessRoyaleUser chessRoyaleUser) {
+        this.accountUsername = chessRoyaleUser.getUsername();
         this.score = 0;
+        this.lifePoints = 2;
     }
 
-    public int getScore() {
-        return score;
-    }
-
-    public void incrementScore()
+    public void incrementScore(int update)
     {
-        this.score += 9000;
+        this.score += update;
+    }
+
+    public void decreaseLifePoints()
+    {
+        this.lifePoints--;
+    }
+
+    public void subscribe(ChessRoyaleGame chessRoyaleGame) {
+        chessRoyaleGame.addParticipant(this);
     }
 
     public Long getId() {
@@ -51,11 +53,15 @@ public class ChessRoyaleParticipant implements Serializable {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public int getScore() {
+        return score;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    public int getLifePoints() {
+        return lifePoints;
     }
 }
