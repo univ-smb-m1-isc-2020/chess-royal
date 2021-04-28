@@ -28,7 +28,7 @@ class ChessDuelTest {
     @Test
     void checkIfOver() {
         duel.checkIfOver();
-        assertNotEquals(duel.getEndDate(), null);
+        assertNotEquals(null, duel.getEndDate());
     }
 
     @Test
@@ -40,19 +40,19 @@ class ChessDuelTest {
 
         duel.updateScores();
 
-        assertEquals(whitePlayer.getScore(), 1);
-        assertEquals(blackPlayer.getScore(), 1);
+        assertEquals(1, whitePlayer.getScore());
+        assertEquals(1, blackPlayer.getScore());
     }
 
     @Test
     void test_Id() {
         duel.setId(1L);
-        assertEquals(duel.getId(), 1);
+        assertEquals(1, duel.getId());
     }
 
     @Test
     void getStartDate() {
-        assertNotEquals(duel.getStartDate(), null);
+        assertNotEquals(null, duel.getStartDate());
     }
 
     @Test
@@ -60,7 +60,7 @@ class ChessDuelTest {
         Date now = new Date();
         duel.setStartDate(now);
 
-        assertEquals(duel.getStartDate(), now);
+        assertEquals(now, duel.getStartDate());
     }
 
     @Test
@@ -68,12 +68,12 @@ class ChessDuelTest {
         Date now = new Date();
         duel.setEndDate(now);
 
-        assertEquals(duel.getEndDate(), now);
+        assertEquals(now, duel.getEndDate());
     }
 
     @Test
     void getWhitePlayer() {
-        assertEquals(duel.getWhitePlayer(), whitePlayer);
+        assertEquals(whitePlayer, duel.getWhitePlayer());
     }
 
     @Test
@@ -82,12 +82,12 @@ class ChessDuelTest {
 
         duel.setWhitePlayer(p);
 
-        assertEquals(duel.getWhitePlayer(), p);
+        assertEquals(p, duel.getWhitePlayer());
     }
 
     @Test
     void getBlackPlayer() {
-        assertEquals(duel.getBlackPlayer(), blackPlayer);
+        assertEquals(blackPlayer, duel.getBlackPlayer());
     }
 
     @Test
@@ -96,23 +96,23 @@ class ChessDuelTest {
 
         duel.setBlackPlayer(p);
 
-        assertEquals(duel.getBlackPlayer(), p);
+        assertEquals(p, duel.getBlackPlayer());
     }
 
     @Test
     void getResult() {
-        assertEquals(duel.getResult(), ChessDuel.ResultType.IN_PROGRESS);
+        assertEquals(ChessDuel.ResultType.IN_PROGRESS, duel.getResult());
     }
 
     @Test
     void setResult() {
         duel.setResult(ChessDuel.ResultType.PAT);
 
-        assertEquals(duel.getResult(), ChessDuel.ResultType.PAT);
+        assertEquals(ChessDuel.ResultType.PAT, duel.getResult());
     }
 
     @Test
     void testToString() {
-        assertNotEquals(duel.toString(), "");
+        assertNotNull(duel.toString());
     }
 }
