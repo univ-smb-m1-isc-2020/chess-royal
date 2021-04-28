@@ -1,45 +1,60 @@
 package fr.univ_smb.isc.m1.chess_royale.infrastructure.persistence;
 
 import fr.univ_smb.isc.m1.chess_royale.application.ChessRoyaleUserService;
+import org.checkerframework.checker.units.qual.C;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class ChessRoyaleUserTest {
 
-    private ChessRoyaleGame game = new ChessRoyaleGame("testGame");
-    private ChessRoyaleUser user = new ChessRoyaleUser("username", "test", "testToken");
+    ChessRoyaleUser user;
+    ChessRoyaleGame game;
+    ChessRoyaleParticipant participant;
 
     @BeforeEach
-    void setUp() {
+    public void setup() throws Exception {
+        user = new ChessRoyaleUser("username", "test", "testToken");
+        game = new ChessRoyaleGame("game");
+        participant = new ChessRoyaleParticipant(user);
     }
 
     @Test
     void subscribe() {
-        //var participant = new ChessRoyaleUserService();
-
-        //user.subscribe(game);
+        user.subscribe(game);
+        List<String> usernames = game.getParticipants()
+                .stream()
+                .map(ChessRoyaleParticipant::getAccountUsername)
+                .collect(Collectors.toList());
+        assert(usernames.contains("username"));
     }
 
     @Test
-    void getId() {
-    }
+    void testId() {
+        user.setId(93L);
 
-    @Test
-    void setId() {
+        assertEquals(user.getId(), 93);
     }
 
     @Test
     void getUsername() {
+        assertEquals(user.getUsername(), "username");
     }
 
     @Test
     void setUsername() {
+        user.setUsername("toto");
+
+        assertEquals(user.getUsername(), "toto");
     }
 
     @Test
     void getPassword() {
+        assertEquals(user.getPassword(), "test");
     }
 
     @Test
