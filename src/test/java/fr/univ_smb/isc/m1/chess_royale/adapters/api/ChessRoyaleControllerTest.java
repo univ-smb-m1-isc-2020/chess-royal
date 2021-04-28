@@ -1,6 +1,7 @@
 package fr.univ_smb.isc.m1.chess_royale.adapters.api;
 
 import fr.univ_smb.isc.m1.chess_royale.application.ChessRoyaleClientService;
+import fr.univ_smb.isc.m1.chess_royale.infrastructure.persistence.ChessDuel;
 import fr.univ_smb.isc.m1.chess_royale.infrastructure.persistence.ChessRoyaleGame;
 import fr.univ_smb.isc.m1.chess_royale.infrastructure.persistence.ChessRoyaleParticipant;
 import fr.univ_smb.isc.m1.chess_royale.infrastructure.persistence.ChessRoyaleUser;
@@ -58,7 +59,7 @@ class ChessRoyaleControllerTest {
     }
 
     @Test
-    void shouldReturnParticpants() throws Exception {
+    void shouldReturnParticipants() throws Exception {
 
         var user = new ChessRoyaleUser("toto", "test", "testToken");
 
@@ -68,5 +69,31 @@ class ChessRoyaleControllerTest {
         mockMvc.perform(get("/list-participants"))
                 .andExpect(status().isOk())
                 .andExpect(content().string("[\"toto\"]"));
+    }
+
+    @Test
+    void shouldReturn4duels() throws Exception {
+
+        var duel1 = new ChessDuel();
+        var duel2 = new ChessDuel();
+        var duel3 = new ChessDuel();
+        var duel4 = new ChessDuel();
+
+        duel1.setId(1L);
+        duel2.setId(2L);
+        duel3.setId(3L);
+        duel4.setId(4L);
+
+
+        when(ChessRoyaleClientService.duels())
+                .thenReturn(of(
+                        duel1,
+                        duel2,
+                        duel3,
+                        duel4));
+
+        mockMvc.perform(get("/list-duels"))
+                .andExpect(status().isOk())
+                .andExpect(content().string("[\"1\",\"2\",\"3\",\"4\"]"));
     }
 }
