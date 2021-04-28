@@ -59,21 +59,31 @@ class ChessRoyaleUserTest {
 
     @Test
     void setPassword() {
+        user.setPassword("tin");
+
+        assertEquals(user.getPassword(), "tin");
     }
 
     @Test
     void getLichessAPIToken() {
+        assertEquals(user.getLichessAPIToken(), "testToken");
     }
 
     @Test
     void setLichessAPIToken() {
+        user.setLichessAPIToken("toats");
+
+        assertEquals(user.getLichessAPIToken(), "toast");
     }
 
     @Test
     void getRoles() {
+        assertEquals(user.getRoles(), "USER");
     }
 
     @Test
     void setRoles() {
+        user.setRoles("ADMIN");
+        assertEquals("ADMIN", user.getRoles());
     }
 }
