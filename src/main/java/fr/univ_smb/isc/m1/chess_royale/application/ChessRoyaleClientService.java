@@ -38,6 +38,11 @@ public class ChessRoyaleClientService {
         return gameRepository.findAll();
     }
 
+    public List<ChessRoyaleParticipant> participants()
+    {
+        return participantRepository.findAll();
+    }
+
     public void deleteUser(Long userId) {
         Optional<ChessRoyaleUser> fact = userRepository.findById(userId);
         fact.ifPresent(userRepository::delete);

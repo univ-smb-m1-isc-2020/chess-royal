@@ -56,4 +56,17 @@ class ChessRoyaleControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(content().string("[\"game1\",\"game2\",\"game3\"]"));
     }
+
+    @Test
+    void shouldReturnParticpants() throws Exception {
+
+        var user = new ChessRoyaleUser("toto", "test", "testToken");
+
+        when(ChessRoyaleClientService.participants())
+                .thenReturn(of(new ChessRoyaleParticipant(user)));
+
+        mockMvc.perform(get("/list-participants"))
+                .andExpect(status().isOk())
+                .andExpect(content().string("[\"toto\"]"));
+    }
 }
