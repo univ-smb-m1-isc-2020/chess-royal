@@ -11,7 +11,6 @@ public class ChessRoyaleServerService {
 
     private final ChessRoyaleUserRepository userRepository;
     private final ChessRoyaleGameRepository gameRepository;
-    private final ChessRoyaleParticipantRepository participantRepository;
 
     public ChessRoyaleServerService(ChessRoyaleUserRepository userRepository,
                                     ChessRoyaleGameRepository gameRepository,
