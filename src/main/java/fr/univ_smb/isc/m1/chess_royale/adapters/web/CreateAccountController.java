@@ -25,7 +25,8 @@ public class CreateAccountController {
         return "create-account";
     }
 
-    @GetMapping(value="/create-account/create")
+
+    @PostMapping(value="/create-account/create")
     public String pidUserSubmit(@RequestParam(name = "name") String name,
                                 @RequestParam(name = "hash") String hash,
                                 @RequestParam(name = "lichessAPIToken") String lichessAPIToken
