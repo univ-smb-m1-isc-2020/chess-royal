@@ -4,33 +4,75 @@
     <title>Create a new user account</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link th:href="@{/css/main.css}" rel="stylesheet" />
+    <link href="../static/bootstrap/css/bootstrap.css" rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.css}"/>
+    <!-- Bootstrap core CSS -->
+    <style>
+        body {
+            display: block ruby;
+            align-items: center;
+            padding-top: 40px;
+            padding-bottom: 40px;
+            background-color: #f5f5f5;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+    </style>
+
+
 </head>
 
+<body class="text-center">
+
+<!--<h1>New user : </h1>-->
+<!--<form action="#" th:action="@{/create-account}" method="post">-->
+<!--    <table>-->
+<!--        <tbody>-->
+<!--            <tr>-->
+<!--                <td>-->
+<!--                    <label>-->
+<!--                        <input name="name" type="text" size="50">-->
+<!--                    </label>-->
+<!--                </td>-->
+<!--                <td>-->
+<!--                    <label>-->
+<!--                        <input name="hash" type="text" size="50">-->
+<!--                    </label>-->
+<!--                </td>-->
+<!--                <td>-->
+<!--                    <button type="submit" th:text="Create"></button>-->
+<!--                </td>-->
+<!--            </tr>-->
+<!--        </tbody>-->
+<!--    </table>-->
+<!--</form>-->
 
 
-<body>
+<main>
+    <form action="#" th:action="@{/create-account/create}" method="post">
+        <h1 class="h3 mb-3 fw-normal">Inscrivez-vous</h1>
+        <hr class="my-4">
 
-<h1>New user : </h1>
-<form action="#" th:action="@{/create-account}" method="post">
-    <table>
-        <tbody>
-        <tr>
-            <td>
-                <label>
-                    <input name="name" type="text" size="50">
-                </label>
-            </td>
-            <td>
-                <label>
-                    <input name="hash" type="text" size="50">
-                </label>
-            </td>
-            <td>
-                <button type="submit" th:text="Create"></button>
-            </td>
-        </tr>
-        </tbody>
-    </table>
-</form>
+        <div class="form-floating">
+            <input type="text" class="form-control" id="floatingInput" placeholder="Username" name="name" value="">
+            <label for="floatingInput">Nom d'utilisateur</label>
+        </div>
+        <div class="form-floating">
+            <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="hash">
+            <label for="floatingPassword">Mot de passe</label>
+        </div>
+        <div class="form-floating">
+            <input type="password" class="form-control" id="floatingToken" placeholder="Token" name="lichessAPIToken">
+            <label for="floatingToken">Token Lichess API</label>
+        </div>
+
+        <hr class="my-4">
+        <button class="w-100 btn btn-lg btn-primary" name="submit" type="submit" value="submit" th:text="Create" >S'inscrire</button>
+<!--        <button type="submit" th:text="Create"></button>-->
+    </form>
+</main>
+
+
 </body>
 </html>

@@ -19,6 +19,4 @@ public class HomeController {
         model.addAttribute("users", chessRoyaleClientService.users());
         return "home";
     }
-
-
 }

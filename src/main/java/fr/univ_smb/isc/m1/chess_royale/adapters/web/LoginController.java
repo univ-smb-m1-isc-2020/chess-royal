@@ -11,4 +11,11 @@ public class LoginController {
         return "login";
     }
 
+
+    @GetMapping(value = "/create-account-page")
+    public String createAccount(){
+        return "create-account";
+    }
+
+
 }
