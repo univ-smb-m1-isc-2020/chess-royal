@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ChessRoyaleUserTest {
@@ -30,7 +31,7 @@ class ChessRoyaleUserTest {
                 .stream()
                 .map(ChessRoyaleParticipant::getAccountUsername)
                 .collect(Collectors.toList());
-        assert(usernames.contains("username"));
+        assertThat(usernames.contains("username")).isTrue();
     }
 
     @Test
@@ -42,43 +43,43 @@ class ChessRoyaleUserTest {
 
     @Test
     void getUsername() {
-        assertEquals(user.getUsername(), "username");
+        assertEquals("username", user.getUsername());
     }
 
     @Test
     void setUsername() {
         user.setUsername("toto");
 
-        assertEquals(user.getUsername(), "toto");
+        assertEquals("toto", user.getUsername());
     }
 
     @Test
     void getPassword() {
-        assertEquals(user.getPassword(), "test");
+        assertEquals("test", user.getPassword());
     }
 
     @Test
     void setPassword() {
         user.setPassword("tin");
 
-        assertEquals(user.getPassword(), "tin");
+        assertEquals("tin", user.getPassword());
     }
 
     @Test
     void getLichessAPIToken() {
-        assertEquals(user.getLichessAPIToken(), "testToken");
+        assertEquals("testToken", user.getLichessAPIToken());
     }
 
     @Test
     void setLichessAPIToken() {
         user.setLichessAPIToken("toast");
 
-        assertEquals(user.getLichessAPIToken(), "toast");
+        assertEquals("toast", user.getLichessAPIToken());
     }
 
     @Test
     void getRoles() {
-        assertEquals(user.getRoles(), "USER");
+        assertEquals("USER", user.getRoles());
     }
 
     @Test
