@@ -32,7 +32,7 @@ class Initializer {
         participantRepository.deleteAllInBatch();
 
         ChessRoyaleUser admin = new ChessRoyaleUser("admin", passwordEncoder.encode("root"), "testToken");
-        admin.setRoles("ADMIN");
+        admin.setRoles("ADMIN,USER");
 
         ChessRoyaleUser user1 = new ChessRoyaleUser("User1", passwordEncoder.encode("none"), "testToken");
         ChessRoyaleUser user2 = new ChessRoyaleUser("User2", passwordEncoder.encode("none"), "testToken");
