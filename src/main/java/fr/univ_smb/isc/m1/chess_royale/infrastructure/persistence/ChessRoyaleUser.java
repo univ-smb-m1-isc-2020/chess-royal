@@ -1,10 +1,11 @@
 package fr.univ_smb.isc.m1.chess_royale.infrastructure.persistence;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.*;
 
 @Entity
-public class ChessRoyaleUser {
+public class ChessRoyaleUser implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

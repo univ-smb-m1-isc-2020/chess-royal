@@ -3,6 +3,7 @@ package fr.univ_smb.isc.m1.chess_royale.application;
 import fr.univ_smb.isc.m1.chess_royale.infrastructure.persistence.*;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -33,9 +34,15 @@ public class ChessRoyaleServerService {
 
     public List<ChessRoyaleParticipant> getParticipants(Long gameId)
     {
-        //FIXME: do it by game ID
-        //return participantRepository.findById(gameId);
-        return participantRepository.findAll();
+        var game = gameRepository.findById(gameId);
+        if (game.isPresent())
+        {
+            return game.get().getParticipants();
+        }
+        else
+        {
+            return new ArrayList<>();
+        }
     }
 
     public ChessRoyaleUser getUser(Long userId)
