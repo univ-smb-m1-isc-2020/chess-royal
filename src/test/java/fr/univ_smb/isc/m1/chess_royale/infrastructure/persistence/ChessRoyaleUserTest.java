@@ -38,7 +38,7 @@ class ChessRoyaleUserTest {
     void testId() {
         user.setId(93L);
 
-        assertEquals(user.getId(), 93);
+        assertEquals(93, user.getId());
     }
 
     @Test
