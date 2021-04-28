@@ -31,6 +31,12 @@ class ChessDuelTest {
         assertNotEquals(null, duel.getEndDate());
     }
 
+    void checkIfNotOver()
+    {
+        duel.setResult(ChessDuel.ResultType.WHITE_VICTORY);
+        assertTrue(duel.checkIfOver();
+    }
+
     @Test
     void updateScores() {
         duel.setResult(ChessDuel.ResultType.DRAW);
@@ -42,6 +48,19 @@ class ChessDuelTest {
 
         assertEquals(1, whitePlayer.getScore());
         assertEquals(1, blackPlayer.getScore());
+    }
+
+    void updateScoreAfterVictory()
+    {
+        duel.setResult(ChessDuel.ResultType.WHITE_VICTORY);
+
+        whitePlayer.setScore(0);
+        blackPlayer.setScore(0);
+
+        duel.updateScores();
+
+        assertEquals(3, whitePlayer.getScore());
+        assertEquals(0, blackPlayer.getScore());
     }
 
     @Test
