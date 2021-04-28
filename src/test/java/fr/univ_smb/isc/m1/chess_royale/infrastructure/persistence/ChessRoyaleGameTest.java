@@ -51,12 +51,14 @@ class ChessRoyaleGameTest {
     void setParticipants() {
         ChessRoyaleUser _userTest = new ChessRoyaleUser("username", "password", "token");
         ChessRoyaleParticipant _participantTest = new ChessRoyaleParticipant(_userTest);
-        _participantTest.subscribe(chessRoyaleGameInstance);
+        List<ChessRoyaleParticipant> _participantsListTest = new ArrayList<>();
+        _participantsListTest.add(_participantTest);
+        chessRoyaleGameInstance.setParticipants(_participantsListTest);
 
         List<ChessRoyaleParticipant> _participantsListWitness = new ArrayList<>();
         _participantsListWitness.add(_participantTest);
 
         assertEquals(_participantsListWitness,chessRoyaleGameInstance.getParticipants());
     }
-    
+
 }
