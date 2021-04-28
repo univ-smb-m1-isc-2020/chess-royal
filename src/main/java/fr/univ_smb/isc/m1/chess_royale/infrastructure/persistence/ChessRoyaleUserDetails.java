@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 
 public class ChessRoyaleUserDetails implements UserDetails {
 
-    private ChessRoyaleUser user;
+    private final ChessRoyaleUser user;
 
     public ChessRoyaleUserDetails(ChessRoyaleUser user)
     {
@@ -21,9 +21,9 @@ public class ChessRoyaleUserDetails implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Arrays.stream(user.getRoles().split(","))
-                .map(SimpleGrantedAuthority::new)
-                .collect(Collectors.toList());
+        List<GrantedAuthority> authorities = new ArrayList<>();
+        authorities.add(new SimpleGrantedAuthority(user.getRoles()));
+        return authorities;
     }
 
     @Override

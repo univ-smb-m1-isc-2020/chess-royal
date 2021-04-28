@@ -27,8 +27,7 @@ public class ChessRoyaleUserService implements UserDetailsService {
         Optional<ChessRoyaleUser> user = userRepository.findByUsername(userName);
 
         user.orElseThrow(() -> new UsernameNotFoundException("Not found: " + userName));
-        ChessRoyaleUserDetails chessRoyaleUserDetails = new ChessRoyaleUserDetails(user.get());
 
-        return chessRoyaleUserDetails;
+        return new ChessRoyaleUserDetails(user.get());
     }
 }

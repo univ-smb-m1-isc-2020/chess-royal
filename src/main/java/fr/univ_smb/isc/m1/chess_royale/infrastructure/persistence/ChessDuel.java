@@ -7,6 +7,15 @@ import java.util.Date;
 @Entity
 public class ChessDuel {
 
+    private enum ResultType
+    {
+        IN_PROGRESS,
+        BLACK_VICTORY,
+        WHITE_VICTORY,
+        PAT,
+        DRAW
+    }
+
     @Id
     @GeneratedValue
     private Long id; //id in the chess royale db
@@ -15,80 +24,62 @@ public class ChessDuel {
 
     @ManyToOne
     private ChessRoyaleParticipant whitePlayer;
+
     @ManyToOne
     private ChessRoyaleParticipant blackPlayer;
 
-    private boolean whiteVictory;
-    private boolean blackVictory;
-
-//    @ManyToOne
-//    @JoinColumn(name = "person_id",
-//            foreignKey = @ForeignKey(name = "PERSON_ID_FK")
-//    )
+    private ResultType result;
 
     public ChessDuel() {
         // keep empty for JPA
     }
 
-    public ChessDuel(String name) {
-//        this.name = name;
+    public ChessDuel(ChessRoyaleParticipant whitePlayer, ChessRoyaleParticipant blackPlayer) {
         this.startDate = new Date();
-//        this.participants = new HashMap<Long, ChessRoyaleParticipant>();
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Date getStartDate() {
-        return startDate;
-    }
-
-    public void setStartDate(Date startDate) {
-        this.startDate = startDate;
-    }
-
-    public Date getEndDate() {
-        return endDate;
-    }
-
-    public void setEndDate(Date endDate) {
-        this.endDate = endDate;
-    }
-
-    public ChessRoyaleParticipant getWhitePlayer() {
-        return whitePlayer;
-    }
-
-    public void setWhitePlayer(ChessRoyaleParticipant whitePlayer) {
         this.whitePlayer = whitePlayer;
-    }
-
-    public ChessRoyaleParticipant getBlackPlayer() {
-        return blackPlayer;
-    }
-
-    public void setBlackPlayer(ChessRoyaleParticipant blackPlayer) {
         this.blackPlayer = blackPlayer;
+        this.result = ResultType.IN_PROGRESS;
     }
 
-    public boolean isWhiteVictory() {
-        return whiteVictory;
+    public boolean isOver()
+    {
+        return this.result != ResultType.IN_PROGRESS;
     }
 
-    public void setWhiteVictory(boolean whiteVictory) {
-        this.whiteVictory = whiteVictory;
+    public void checkIfOver()
+    {
+        //TODO: some request to the Lichess API to change result
+        this.result = ResultType.BLACK_VICTORY;
+        this.endDate = new Date();
+        this.updateScores();
     }
 
-    public boolean isBlackVictory() {
-        return blackVictory;
+    public void updateScores() {
+        switch (this.result)
+        {
+            case WHITE_VICTORY:
+                this.whitePlayer.incrementScore(3);
+                break;
+            case BLACK_VICTORY:
+                this.blackPlayer.incrementScore(3);
+                break;
+            case PAT:
+            case DRAW:
+                this.whitePlayer.incrementScore(1);
+                this.blackPlayer.incrementScore(1);
+                break;
+        }
     }
 
-    public void setBlackVictory(boolean blackVictory) {
-        this.blackVictory = blackVictory;
+    @Override
+    public String toString() {
+        return "ChessDuel{" +
+                "id=" + id +
+                ", startDate=" + startDate +
+                ", endDate=" + endDate +
+                ", whitePlayer=" + whitePlayer +
+                ", blackPlayer=" + blackPlayer +
+                ", result=" + result +
+                '}';
     }
 }

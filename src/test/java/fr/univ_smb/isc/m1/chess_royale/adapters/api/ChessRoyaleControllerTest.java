@@ -34,9 +34,9 @@ class ChessRoyaleControllerTest {
 
         when(ChessRoyaleClientService.users())
                 .thenReturn(of(
-                        new ChessRoyaleUser("pipo-1", "test"),
-                        new ChessRoyaleUser("pipo-2", "test")));
-
+                        new ChessRoyaleUser("pipo-1", "test", "test token"),
+                        new ChessRoyaleUser("pipo-2", "test", "test token")
+                ));
         mockMvc.perform(get("/list-users"))
                 .andExpect(status().isOk())
                 .andExpect(content().string("[\"pipo-1\",\"pipo-2\"]"));
@@ -47,9 +47,9 @@ class ChessRoyaleControllerTest {
 
         when(ChessRoyaleClientService.games())
                 .thenReturn(of(
-                        new ChessRoyaleGame("game1", new ArrayList< ChessRoyaleParticipant>()),
-                        new ChessRoyaleGame("game2", new ArrayList< ChessRoyaleParticipant>()),
-                        new ChessRoyaleGame("game3", new ArrayList< ChessRoyaleParticipant>())
+                        new ChessRoyaleGame("game1"),
+                        new ChessRoyaleGame("game2"),
+                        new ChessRoyaleGame("game3")
                 ));
 
         mockMvc.perform(get("/list-games"))

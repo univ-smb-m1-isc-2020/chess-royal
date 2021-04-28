@@ -38,22 +38,24 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
         auth.authenticationProvider(this.authenticationProvider());
+
     }
 
     @Override
     protected void configure(final HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/admin/**").hasRole("ADMIN")
+                .antMatchers("/admin/**").hasAuthority("ADMIN")
+                .antMatchers("/hello/admin").hasAuthority("ADMIN")
                 .antMatchers("/hello/**").authenticated()
                 .antMatchers("/register").permitAll()
                 .anyRequest().permitAll()
                 .and()
                 .formLogin()
-                .loginPage("/login-form")
-                //.loginPage("/")
+                //.loginPage("/login-form")
+                .loginPage("/")
                 .loginProcessingUrl("/perform_login")
-                .defaultSuccessUrl("/hello/test", true)
+                .defaultSuccessUrl("/hello/user", true)
                 .failureUrl("/failure");
     }
 

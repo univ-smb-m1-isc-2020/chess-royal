@@ -2,10 +2,7 @@ package fr.univ_smb.isc.m1.chess_royale.infrastructure.persistence;
 
 
 import javax.persistence.*;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Entity
 public class ChessRoyaleGame {
@@ -13,32 +10,19 @@ public class ChessRoyaleGame {
     @Id
     @GeneratedValue
     private Long id; //id in the chess royale db
-    private String name; //username
+    private String name; //name for the game given by user
     private Date startDate;
 
-    //FIXME
     @OneToMany
-    private Map<Long, ChessRoyaleParticipant> participants; //map of chessRoyaleParticipants based on their id
-
-
-//    @ManyToOne
-//    @JoinColumn(name = "person_id",
-//            foreignKey = @ForeignKey(name = "PERSON_ID_FK")
-//    )
+    private List<ChessRoyaleParticipant> participants = new ArrayList<>();
 
     public ChessRoyaleGame() {
         // keep empty for JPA
     }
 
-    public ChessRoyaleGame(String name, List<ChessRoyaleParticipant> participants) {
+    public ChessRoyaleGame(String name) {
         this.name = name;
         this.startDate = new Date();
-        this.participants = new HashMap<Long, ChessRoyaleParticipant>();
-
-        for (ChessRoyaleParticipant p : participants)
-        {
-            this.participants.put(p.getId(), p);
-        }
     }
 
     public Long getId() {
@@ -55,5 +39,25 @@ public class ChessRoyaleGame {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
+    public List<ChessRoyaleParticipant> getParticipants() {
+        return participants;
+    }
+
+    public void setParticipants(List<ChessRoyaleParticipant> participants) {
+        this.participants = participants;
+    }
+
+    public void addParticipant(ChessRoyaleParticipant chessRoyaleParticipant) {
+        this.participants.add(chessRoyaleParticipant);
     }
 }

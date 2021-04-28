@@ -1,14 +1,7 @@
 package fr.univ_smb.isc.m1.chess_royale.infrastructure.persistence;
 
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
-
 import javax.persistence.*;
 import java.util.*;
-import java.util.stream.Collectors;
 
 @Entity
 public class ChessRoyaleUser {
@@ -24,17 +17,27 @@ public class ChessRoyaleUser {
     private String roles;
 
     @OneToMany
-    private Set<ChessRoyaleParticipant> userParticipants;
+    private Set<ChessRoyaleParticipant> userParticipations;
 
     public ChessRoyaleUser() {
         // keep empty for JPA
     }
 
-    public ChessRoyaleUser(String username, String password)
+    public ChessRoyaleUser(String username, String password, String lichessAPIToken)
     {
         this.username = username;
         this.password = password;
+        this.lichessAPIToken = lichessAPIToken;
         this.roles = "USER";
+
+        this.userParticipations = new HashSet<>();
+    }
+
+    public void subscribe(ChessRoyaleGame chessRoyaleGame)
+    {
+        ChessRoyaleParticipant participant = new ChessRoyaleParticipant(this);
+        participant.subscribe(chessRoyaleGame);
+        this.userParticipations.add(participant);
     }
 
     public Long getId() {
