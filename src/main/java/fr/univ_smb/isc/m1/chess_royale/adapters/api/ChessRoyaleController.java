@@ -1,6 +1,7 @@
 package fr.univ_smb.isc.m1.chess_royale.adapters.api;
 
 import fr.univ_smb.isc.m1.chess_royale.application.ChessRoyaleClientService;
+import fr.univ_smb.isc.m1.chess_royale.infrastructure.persistence.ChessDuel;
 import fr.univ_smb.isc.m1.chess_royale.infrastructure.persistence.ChessRoyaleGame;
 import fr.univ_smb.isc.m1.chess_royale.infrastructure.persistence.ChessRoyaleParticipant;
 import fr.univ_smb.isc.m1.chess_royale.infrastructure.persistence.ChessRoyaleUser;
@@ -43,6 +44,16 @@ public class ChessRoyaleController {
         return chessRoyaleClientService.participants()
                 .stream()
                 .map(ChessRoyaleParticipant::getAccountUsername)
+                .collect(toList());
+    }
+
+    @GetMapping(value="/list-duels")
+    public List<String> listDuels()
+    {
+        return chessRoyaleClientService.duels()
+                .stream()
+                .map(ChessDuel::getId)
+                .map(Object::toString)
                 .collect(toList());
     }
 }

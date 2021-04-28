@@ -74,6 +74,54 @@ public class ChessDuel {
         }
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
+    }
+
+    public ChessRoyaleParticipant getWhitePlayer() {
+        return whitePlayer;
+    }
+
+    public void setWhitePlayer(ChessRoyaleParticipant whitePlayer) {
+        this.whitePlayer = whitePlayer;
+    }
+
+    public ChessRoyaleParticipant getBlackPlayer() {
+        return blackPlayer;
+    }
+
+    public void setBlackPlayer(ChessRoyaleParticipant blackPlayer) {
+        this.blackPlayer = blackPlayer;
+    }
+
+    public ResultType getResult() {
+        return result;
+    }
+
+    public void setResult(ResultType result) {
+        this.result = result;
+    }
+
     @Override
     public String toString() {
         return "ChessDuel{" +

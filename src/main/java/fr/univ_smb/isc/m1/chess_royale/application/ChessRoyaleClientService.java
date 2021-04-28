@@ -15,17 +15,20 @@ public class ChessRoyaleClientService {
     private final ChessRoyaleUserRepository userRepository;
     private final ChessRoyaleGameRepository gameRepository;
     private final ChessRoyaleParticipantRepository participantRepository;
+    private final ChessDuelRepository chessDuelRepository;
 
     private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     public ChessRoyaleClientService(ChessRoyaleUserRepository userRepository,
                                     ChessRoyaleGameRepository gameRepository,
-                                    ChessRoyaleParticipantRepository participantRepository
+                                    ChessRoyaleParticipantRepository participantRepository,
+                                    ChessDuelRepository chessDuelRepository
     )
     {
         this.userRepository = userRepository;
         this.gameRepository = gameRepository;
         this.participantRepository = participantRepository;
+        this.chessDuelRepository = chessDuelRepository;
     }
 
     public List<ChessRoyaleUser> users()
@@ -41,6 +44,11 @@ public class ChessRoyaleClientService {
     public List<ChessRoyaleParticipant> participants()
     {
         return participantRepository.findAll();
+    }
+
+    public List<ChessDuel> duels()
+    {
+        return chessDuelRepository.findAll();
     }
 
     public void deleteUser(Long userId) {
