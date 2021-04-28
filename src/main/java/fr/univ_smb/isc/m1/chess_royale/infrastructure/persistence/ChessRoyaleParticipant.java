@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class ChessRoyaleParticipant implements Serializable {
+public class ChessRoyaleParticipant {
 
     @Id
     @GeneratedValue
@@ -18,7 +18,7 @@ public class ChessRoyaleParticipant implements Serializable {
     private int lifePoints;
 
     @OneToMany
-    private List<ChessDuel> chessDuels = new ArrayList<>();
+    private final List<ChessDuel> chessDuels = new ArrayList<>();
 
     //Constructors
     public ChessRoyaleParticipant() {
@@ -53,6 +53,14 @@ public class ChessRoyaleParticipant implements Serializable {
         this.id = id;
     }
 
+    public String getAccountUsername() {
+        return accountUsername;
+    }
+
+    public void setAccountUsername(String accountUsername) {
+        this.accountUsername = accountUsername;
+    }
+
     public int getScore() {
         return score;
     }
@@ -64,4 +72,18 @@ public class ChessRoyaleParticipant implements Serializable {
     public int getLifePoints() {
         return lifePoints;
     }
+
+    public void setLifePoints(int lifePoints) {
+        this.lifePoints = lifePoints;
+    }
+
+    public List<ChessDuel> getChessDuels() {
+        return chessDuels;
+    }
+
+    public void addChessDuel(ChessDuel duel)
+    {
+        this.chessDuels.add(duel);
+    }
+
 }

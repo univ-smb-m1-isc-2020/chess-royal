@@ -68,6 +68,9 @@ public class ChessDuel {
                 this.whitePlayer.incrementScore(1);
                 this.blackPlayer.incrementScore(1);
                 break;
+            case IN_PROGRESS:
+                //Do nothing
+                break;
         }
     }
 

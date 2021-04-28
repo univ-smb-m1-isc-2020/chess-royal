@@ -1,7 +1,6 @@
 package fr.univ_smb.isc.m1.chess_royale.application;
 
 import fr.univ_smb.isc.m1.chess_royale.infrastructure.persistence.*;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -16,7 +15,7 @@ public class ChessRoyaleClientService {
     private final ChessRoyaleGameRepository gameRepository;
     private final ChessRoyaleParticipantRepository participantRepository;
 
-    final private PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+    private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     public ChessRoyaleClientService(ChessRoyaleUserRepository userRepository,
                                     ChessRoyaleGameRepository gameRepository,
@@ -43,20 +42,20 @@ public class ChessRoyaleClientService {
         fact.ifPresent(userRepository::delete);
     }
 
-    public void createUser(String name, String hash, String lichessAPIToken) throws Exception {
+    public void createUser(String name, String hash, String lichessAPIToken) throws UsernameAlreadyTakenException {
         Optional<ChessRoyaleUser> user = userRepository.findByUsername(name);
         if (user.isEmpty()) {
             userRepository.save(new ChessRoyaleUser(name, this.passwordEncoder.encode(hash), lichessAPIToken));
         }
         else
         {
-            throw new Exception("Username already taken :" + name);
+            throw new UsernameAlreadyTakenException("Username already taken :" + name);
         }
     }
 
     public void subscribeUserToGame(ChessRoyaleUser user, ChessRoyaleGame game)
     {
-        ChessRoyaleParticipant participant = new ChessRoyaleParticipant(user);
+        var participant = new ChessRoyaleParticipant(user);
         participant.subscribe(game);
 
         //Persist

@@ -35,7 +35,7 @@ public class ChessRoyaleUser {
 
     public void subscribe(ChessRoyaleGame chessRoyaleGame)
     {
-        ChessRoyaleParticipant participant = new ChessRoyaleParticipant(this);
+        var participant = new ChessRoyaleParticipant(this);
         participant.subscribe(chessRoyaleGame);
         this.userParticipations.add(participant);
     }

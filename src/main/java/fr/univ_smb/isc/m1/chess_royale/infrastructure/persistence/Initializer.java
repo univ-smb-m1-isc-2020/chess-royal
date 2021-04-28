@@ -13,7 +13,7 @@ class Initializer {
     private final ChessRoyaleParticipantRepository participantRepository;
     private final ChessRoyaleGameRepository gameRepository;
 
-    final private PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+    private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     public Initializer(ChessRoyaleUserRepository userRepository,
                        ChessRoyaleParticipantRepository participantRepository,
@@ -31,13 +31,13 @@ class Initializer {
         gameRepository.deleteAllInBatch();
         participantRepository.deleteAllInBatch();
 
-        ChessRoyaleUser admin = new ChessRoyaleUser("admin", passwordEncoder.encode("root"), "testToken");
+        var admin = new ChessRoyaleUser("admin", passwordEncoder.encode("chess-royale"), "testToken0");
         admin.setRoles("ADMIN,USER");
 
-        ChessRoyaleUser user1 = new ChessRoyaleUser("User1", passwordEncoder.encode("none"), "testToken");
-        ChessRoyaleUser user2 = new ChessRoyaleUser("User2", passwordEncoder.encode("none"), "testToken");
-        ChessRoyaleUser user3 = new ChessRoyaleUser("User3", passwordEncoder.encode("none"), "testToken");
-        ChessRoyaleUser user4 = new ChessRoyaleUser("User4", passwordEncoder.encode("none"), "testToken");
+        var user1 = new ChessRoyaleUser("User1", passwordEncoder.encode("password1"), "testToken1");
+        var user2 = new ChessRoyaleUser("User2", passwordEncoder.encode("password2"), "testToken2");
+        var user3 = new ChessRoyaleUser("User3", passwordEncoder.encode("password3"), "testToken3");
+        var user4 = new ChessRoyaleUser("User4", passwordEncoder.encode("password4"), "testToken4");
 
         if (userRepository.findAll().isEmpty()) {
             userRepository.saveAndFlush(user1);
@@ -47,7 +47,7 @@ class Initializer {
             userRepository.saveAndFlush(admin);
         }
 
-        ChessRoyaleGame game1 = new ChessRoyaleGame("Test Game 1");
+        var game1 = new ChessRoyaleGame("Test Game 1");
 
         if (gameRepository.findAll().isEmpty())
         {

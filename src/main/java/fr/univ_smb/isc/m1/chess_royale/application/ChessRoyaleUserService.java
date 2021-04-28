@@ -4,12 +4,10 @@ import fr.univ_smb.isc.m1.chess_royale.infrastructure.persistence.ChessRoyaleUse
 import fr.univ_smb.isc.m1.chess_royale.infrastructure.persistence.ChessRoyaleUserDetails;
 import fr.univ_smb.isc.m1.chess_royale.infrastructure.persistence.ChessRoyaleUserRepository;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import java.util.Objects;
 import java.util.Optional;
 
 @Service

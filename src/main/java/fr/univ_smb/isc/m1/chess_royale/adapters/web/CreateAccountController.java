@@ -1,6 +1,7 @@
 package fr.univ_smb.isc.m1.chess_royale.adapters.web;
 
 import fr.univ_smb.isc.m1.chess_royale.application.ChessRoyaleClientService;
+import fr.univ_smb.isc.m1.chess_royale.application.UsernameAlreadyTakenException;
 import fr.univ_smb.isc.m1.chess_royale.infrastructure.persistence.ChessRoyaleUser;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,7 +35,7 @@ public class CreateAccountController {
             chessRoyaleClientService.createUser(name, hash, lichessAPIToken);
             return "redirect:/create-account";
         }
-        catch (Exception e)
+        catch (UsernameAlreadyTakenException e)
         {
             return "redirect:/error-username-already-taken";
         }

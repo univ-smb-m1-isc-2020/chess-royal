@@ -1,6 +1,7 @@
 package fr.univ_smb.isc.m1.chess_royale.adapters.web;
 
 import fr.univ_smb.isc.m1.chess_royale.application.ChessRoyaleClientService;
+import fr.univ_smb.isc.m1.chess_royale.application.UsernameAlreadyTakenException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -40,7 +41,7 @@ public class AdminController {
             chessRoyaleClientService.createUser(name, hash, lichessAPIToken);
             return "redirect:/admin";
         }
-        catch (Exception e)
+        catch (UsernameAlreadyTakenException e)
         {
             return "redirect:/error-username-already-taken";
         }
