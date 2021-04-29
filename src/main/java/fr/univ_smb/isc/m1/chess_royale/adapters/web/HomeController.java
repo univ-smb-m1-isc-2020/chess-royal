@@ -33,7 +33,7 @@ public class HomeController {
         var headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
 
-        headers.add("Authorization", "Bearer 3LAzGO8RkIu9c7f3");
+        headers.add("Authorization", "Bearer AkhjFeQDBLXrelyv");
 
         var entity = new HttpEntity<String>("Headers", headers);
 
