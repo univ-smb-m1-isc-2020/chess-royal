@@ -24,7 +24,9 @@
 <!--                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>-->
 <!--                </li>-->
             </ul>
-            <button type="button" class="btn btn-primary">Se deconnecter</button>
+            <form action="#" th:action="@{/logout}" method="get">
+                <button type="submit" class="btn btn-primary" name="submit" value="submit" th:text="Logout">Se deconnecter</button>
+            </form>
         </div>
     </div>
 </nav>
