@@ -23,5 +23,10 @@ public class HomeController {
         return "home";
     }
 
+//    @GetMapping(value = "/game")
+//    public String game(Model model, Principal principal){
+//
+//    }
+
 
 }
