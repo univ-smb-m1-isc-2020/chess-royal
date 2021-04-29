@@ -38,7 +38,9 @@
     <div class="card-body">
         <h5 class="card-title">Camille</h5>
         <p class="card-text">L'inviter à une partie sur lichess.org</p>
-        <a href="#" class="card-link">Lancer le match</a>
+        <form action="#" th:action="@{/post-test}" method="get">
+            <button type="submit" class="btn btn-primary" name="home" value="post" th:text="TIMETODUEL"></button>
+        </form>
     </div>
 </div>
 <!--<ul class="nav nav-pills">-->
@@ -53,7 +55,6 @@
     <li th:each="user : ${users}" th:text="${user.username}"></li>
 </ul>
 <hr class="my-4">
-<p th:text="${connectedUserName}"></p>
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="../static/bootstrap/js/bootstrap.js" th:href="@{/bootstrap/js/bootstrap.js}"></script>
