@@ -4,8 +4,6 @@ import fr.univ_smb.isc.m1.chess_royale.application.ChessRoyaleClientService;
 import org.springframework.http.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.client.RestTemplate;
 
@@ -39,7 +37,7 @@ public class HomeController {
 
         var entity = new HttpEntity<String>("Headers", headers);
 
-        RestTemplate restTemplate = new RestTemplate();
+        var restTemplate = new RestTemplate();
 
         try
         {
