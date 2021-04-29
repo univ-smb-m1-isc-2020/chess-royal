@@ -22,11 +22,4 @@ public class HomeController {
         model.addAttribute("connectedUserName", principal.getName());
         return "home";
     }
-
-//    @GetMapping(value = "/game")
-//    public String game(Model model, Principal principal){
-//
-//    }
-
-
 }
