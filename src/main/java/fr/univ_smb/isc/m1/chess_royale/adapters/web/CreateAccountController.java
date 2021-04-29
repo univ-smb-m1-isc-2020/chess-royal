@@ -34,7 +34,7 @@ public class CreateAccountController {
                                 ) {
         try{
             chessRoyaleClientService.createUser(name, hash, lichessAPIToken);
-            return "redirect:/create-account";
+            return "redirect:/";
         }
         catch (UsernameAlreadyTakenException e)
         {

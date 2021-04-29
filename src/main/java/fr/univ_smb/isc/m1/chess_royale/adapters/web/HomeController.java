@@ -28,12 +28,12 @@ public class HomeController {
     @GetMapping(value="/post-test")
     public String postRequestTest()
     {
-        var url = "https://lichess.org/api/challenge/Owydoo";
+        var url = "https://lichess.org/api/challenge/camilleo";
 
         var headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
 
-        headers.add("Authorization", "Bearer PlbPWXEbwRg4Qb5J");
+        headers.add("Authorization", "Bearer 3LAzGO8RkIu9c7f3");
 
         var entity = new HttpEntity<String>("Headers", headers);
 
